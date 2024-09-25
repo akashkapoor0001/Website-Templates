@@ -12,3 +12,7 @@
     max-width: 100%;
   }
   
+  .carousel-item {
+    transition: opacity 0.5s ease, filter 0.5s ease;
+  }
+  
