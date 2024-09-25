@@ -1,0 +1,45 @@
+<nav class="bg-black bg-opacity-80 shadow-md py-3 px-6 fixed w-full z-10" style="box-shadow: 0 4px 10px rgba(129, 140, 248, 1);">
+  <div class="flex justify-between items-center">
+    <!-- Logo -->
+    <div class="text-2xl font-bold text-gray-200">
+      <a href="#">
+        <img src="assets/logo1.png" alt="Logo" class="h-14 w-auto">
+      </a>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex space-x-6">
+      <a href="#intro" class="text-[#6366F1] no-underline transition duration-300 py-2 px-4 rounded-lg hover:bg-gray-700 bg-opacity-50">
+        Introduction
+      </a>
+      <a href="#templates" class="text-[#6366F1] no-underline transition duration-300 py-2 px-4 rounded-lg hover:bg-gray-700 bg-opacity-50">
+        Templates
+      </a>
+      <a href="#contact" class="text-[#6366F1] no-underline transition duration-300 py-2 px-4 rounded-lg hover:bg-gray-700 bg-opacity-50">
+        Contact
+      </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <div class="md:hidden">
+      <button (click)="toggleMenu()" class="text-gray-300 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div *ngIf="isMenuOpen" class="md:hidden mt-4 transition-all duration-500 ease-in-out transform">
+    <a href="#intro" class="block text-[#6366F1] no-underline py-2 px-4 mb-2 rounded-lg hover:bg-gray-700 bg-opacity-50">
+      Introduction
+    </a>
+    <a href="#templates" class="block text-[#6366F1] no-underline py-2 px-4 mb-2 rounded-lg hover:bg-gray-700 bg-opacity-50">
+      Templates
+    </a>
+    <a href="#contact" class="block text-[#6366F1] no-underline py-2 px-4 rounded-lg hover:bg-gray-700 bg-opacity-50">
+      Contact
+    </a>
+  </div>
+</nav>

@@ -1,0 +1,48 @@
+.animated-image-container {
+  @apply flex items-center justify-center;
+}
+
+img {
+  animation: bounce 5s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+// Slide-in animations for the header text
+.slide-left {
+  opacity: 0;
+  transform: translateX(-100vw); // Start off-screen to the left
+  animation: slideInLeft 0.7s forwards;
+}
+
+.slide-right {
+  opacity: 0;
+  transform: translateX(100vw); // Start off-screen to the right
+  animation: slideInRight 0.7s 0.5s forwards;
+}
+
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0); // End position
+  }
+}
+
+@keyframes slideInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0); // End position
+  }
+}
+
+h1 {
+  margin-top: 40px; // Adjust the value as needed
+}
+
