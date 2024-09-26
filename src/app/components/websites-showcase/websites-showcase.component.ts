@@ -31,7 +31,7 @@ export class WebsitesShowcaseComponent implements OnInit {
       setInterval(() => {
         this.currentIndex = (this.currentIndex < this.items.length - 1) ? this.currentIndex + 1 : 0;
         this.updateCarousel();
-      }, 3000);
+      }, 2000);
     } else {
       console.error('Carousel not found'); // Log if carousel is not found
     }
