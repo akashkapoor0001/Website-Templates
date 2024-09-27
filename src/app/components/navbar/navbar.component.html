@@ -21,9 +21,12 @@
 
     <!-- Mobile Menu Button -->
     <div class="md:hidden">
-      <button (click)="toggleMenu()" class="text-gray-300 focus:outline-none">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <button (click)="toggleMenu()" class="text-gray-300 focus:outline-none hover:text-indigo-400">
+        <svg *ngIf="!isMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+        <svg *ngIf="isMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-400 transition-colors duration-200 hover:text-purple-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
@@ -31,13 +34,13 @@
 
   <!-- Mobile Menu -->
   <div *ngIf="isMenuOpen" class="md:hidden mt-4 transition-all duration-500 ease-in-out transform">
-    <a href="#home" class="block menu-link">Home</a>
-    <a href="#templates" class="block menu-link">Templates</a>
-    <a href="#about" class="block menu-link">About</a>
-    <a href="#shop" class="block menu-link">Shop</a>
-    <a href="#contact" class="block menu-link">Contact</a>
+    <a (click)="closeMenu()" href="#home" class="block menu-link">Home</a>
+    <a (click)="closeMenu()" href="#templates" class="block menu-link">Templates</a>
+    <a (click)="closeMenu()" href="#about" class="block menu-link">About</a>
+    <a (click)="closeMenu()" href="#shop" class="block menu-link">Shop</a>
+    <a (click)="closeMenu()" href="#contact" class="block menu-link">Contact</a>
 
     <!-- Mobile Login Button -->
-    <a href="#login" class="block login-btn mt-4">Log In</a>
+    <a (click)="closeMenu()" href="#login" class="block login-btn mt-4">Log In</a>
   </div>
 </nav>
