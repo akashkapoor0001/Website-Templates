@@ -1,10 +1,14 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { gsap} from 'gsap';
+import { WebsitesShowcaseComponent } from '../websites-showcase/websites-showcase.component';
+import { AboutComponent } from '../about/about.component';
+import { ContactComponent } from '../contact/contact.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-intro',
   standalone: true,
-  imports: [],
+  imports: [WebsitesShowcaseComponent, AboutComponent, ContactComponent,NavbarComponent],
   templateUrl: './intro.component.html',
   styleUrl: './intro.component.scss'
 })
