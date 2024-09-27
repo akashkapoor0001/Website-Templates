@@ -1,0 +1,25 @@
+
+    .blur-left {
+      filter: blur(8px); /* Adds blur effect to the image */
+      object-position: left; /* Keeps the image focus on the left */
+    }
+  
+    .unique-font {
+      font-family: 'Spartan', sans-serif; /* Apply a unique font, customize as needed */
+    }
+  
+    /* Ensure the image covers the entire viewport height and width */
+    .h-full {
+      height: 100vh; /* Full screen height for the left image */
+    }
+  
+    /* Ensure image stretches width-wise */
+    .w-full {
+      width: 50vw; /* Full screen width for the image container */
+    }
+  
+    /* Ensure no overflow from the image */
+    .overflow-hidden {
+      overflow: hidden;
+    }
+  

@@ -5,7 +5,10 @@ module.exports = {
     extend: {},
   },
   variants: {
-    extend: {},
+    extend: {
+      borderColor: ['focus'], // Enable focus variant for borderColor
+      // Other variants can be extended here
+    },
   },
   plugins: [],
 }

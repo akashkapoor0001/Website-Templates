@@ -1,0 +1,29 @@
+/* contact.component.css */
+body {
+    font-family: 'Spartan', sans-serif; /* Use Spartan or a similar clean font */
+  }
+  
+  .h-screen {
+    height: 100vh;
+  }
+  
+  input, textarea {
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+    padding: 0.5rem;
+  }
+  
+  button {
+    background-color: transparent;
+    border: 1px solid white;
+    padding: 0.5rem 1.5rem;
+    text-transform: uppercase;
+  }
+  
+  h2 {
+    font-family: 'Spartan', sans-serif; /* Adjust to match your image's font */
+    font-size: 4rem;
+    font-weight: bold;
+  }
+  
