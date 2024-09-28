@@ -20,23 +20,29 @@
 
 
 <div id="shop" class="card">
-    <h1 class="shop-title">Shop Templates</h1>
-    <p-galleria 
-        [value]="images" 
-        [autoPlay]="true" 
-        [circular]="true" 
-        [responsiveOptions]="responsiveOptions" 
-        [numVisible]="5" 
-        [containerStyle]="{ 'max-width': '800px', 'margin': '0 auto' }"> 
-            <ng-template pTemplate="item" let-item>
-                <img [src]="item.itemImageSrc" style="width: 100%;" />
-            </ng-template>
-            <ng-template pTemplate="thumbnail" let-item>
-                <div class="grid grid-nogutter justify-content-center">
-                    <img [src]="item.thumbnailImageSrc" />
-                </div>
-            </ng-template>
-    </p-galleria>
+    <div class="shop-content">
+        <h1 class="text-6xl font-extrabold text-black tracking-wide text-center unique-font mb-4">Shop Templates</h1>
+        <div class="galleria-container">
+            <p-galleria 
+                [value]="images" 
+                [autoPlay]="true" 
+                [circular]="true" 
+                [responsiveOptions]="responsiveOptions" 
+                [numVisible]="5" 
+                [containerStyle]="{ 'max-width': '640px', 'width': '100%' }"> 
+                <ng-template pTemplate="item" let-item>
+                    <img [src]="item.itemImageSrc" style="width: 100%; height: auto;" />
+                </ng-template>
+                <ng-template pTemplate="thumbnail" let-item>
+                    <div class="grid grid-nogutter justify-content-center">
+                        <img [src]="item.thumbnailImageSrc" style="width: 100%; height: auto;" />
+                    </div>
+                </ng-template>
+            </p-galleria>
+        </div>
+    </div>
 </div>
+
+
 
 
