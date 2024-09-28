@@ -5,11 +5,12 @@ import { AboutComponent } from '../about/about.component';
 import { ContactComponent } from '../contact/contact.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ShopComponent } from "../shop/shop.component";
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-intro',
   standalone: true,
-  imports: [WebsitesShowcaseComponent, AboutComponent, ContactComponent, NavbarComponent, ShopComponent],
+  imports: [WebsitesShowcaseComponent, AboutComponent, ContactComponent, NavbarComponent, ShopComponent, FooterComponent],
   templateUrl: './intro.component.html',
   styleUrl: './intro.component.scss'
 })
