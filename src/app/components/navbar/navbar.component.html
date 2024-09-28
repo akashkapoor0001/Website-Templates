@@ -9,14 +9,14 @@
 
     <!-- Desktop Menu -->
     <div class="hidden md:flex space-x-6">
-      <a href="#home" class="menu-link">Home</a>
-      <a href="#templates" class="menu-link">Templates</a>
-      <a href="#about" class="menu-link">About</a>
-      <a href="#shop" class="menu-link">Shop</a>
-      <a href="#contact" class="menu-link">Contact</a>
+      <a href="#home" class="menu-link" [class.active]="activeLink === '#home'" (click)="setActiveLink('#home')">Home</a>
+      <a href="#templates" class="menu-link" [class.active]="activeLink === '#templates'" (click)="setActiveLink('#templates')">Templates</a>
+      <a href="#about" class="menu-link" [class.active]="activeLink === '#about'" (click)="setActiveLink('#about')">About</a>
+      <a href="#shop" class="menu-link" [class.active]="activeLink === '#shop'" (click)="setActiveLink('#shop')">Shop</a>
+      <a href="#contact" class="menu-link" [class.active]="activeLink === '#contact'" (click)="setActiveLink('#contact')">Contact</a>
 
       <!-- Login Button -->
-      <a routerLink="/login" class="login-btn">Log In</a>
+      <a href="#login" class="login-btn">Log In</a>
     </div>
 
     <!-- Mobile Menu Button -->
@@ -41,6 +41,6 @@
     <a (click)="closeMenu()" href="#contact" class="block menu-link">Contact</a>
 
     <!-- Mobile Login Button -->
-    <a (click)="closeMenu()" routerLink="/login" class="block login-btn mt-4">Log In</a>
+    <a (click)="closeMenu()" href="#login" class="block login-btn mt-4">Log In</a>
   </div>
 </nav>
