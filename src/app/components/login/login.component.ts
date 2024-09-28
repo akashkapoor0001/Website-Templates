@@ -14,9 +14,16 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 name: any;
 isFlipped = false;
-onRegister() {
-throw new Error('Method not implemented.');
+onRegister(event: Event) {
+  event.preventDefault(); // Prevent the default form submission behavior
+  // You can add any registration logic here if needed.
+  // For now, we will just log the registration attempt.
+  console.log('Registration attempted for:', this.email, this.password);
+  
+  // Toggle to show the login form
+  this.toggleForm();
 }
+
 toggleForm() {
 this.isFlipped = !this.isFlipped;
 }
