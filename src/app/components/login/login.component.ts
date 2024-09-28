@@ -12,6 +12,14 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+name: any;
+isFlipped = false;
+onRegister() {
+throw new Error('Method not implemented.');
+}
+toggleForm() {
+this.isFlipped = !this.isFlipped;
+}
 email: string ='';
 password: string ='';
 
