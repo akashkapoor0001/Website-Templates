@@ -1,4 +1,4 @@
-<div id="shop" class="carousel-container flex justify-center items-center bg-white min-h-screen">
+<div id="shop" class="carousel-container relative bg-white min-h-screen pt-24"> <!-- Added padding-top -->
     <div *ngFor="let item of items; let i = index" 
          class="carousel-item"
          [ngClass]="{'active': i === currentIndex, 'inactive': i !== currentIndex}">
@@ -6,5 +6,4 @@
            [alt]="item.altText" 
            class="carousel-img">
     </div>
-  </div>
-  
+</div>
