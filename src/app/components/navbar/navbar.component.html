@@ -16,7 +16,7 @@
       <a href="#contact" class="menu-link" [class.active]="activeLink === '#contact'" (click)="setActiveLink('#contact')">Contact</a>
 
       <!-- Login Button -->
-      <a href="#login" class="login-btn">Log In</a>
+      <a routerLink="/login" class="login-btn">Log In / Register</a>
     </div>
 
     <!-- Mobile Menu Button -->
@@ -41,6 +41,6 @@
     <a (click)="closeMenu()" href="#contact" class="block menu-link">Contact</a>
 
     <!-- Mobile Login Button -->
-    <a (click)="closeMenu()" href="#login" class="block login-btn mt-4">Log In</a>
+    <a (click)="closeMenu()" routerLink="/login" class="block login-btn mt-4">Log In / Register</a>
   </div>
 </nav>
