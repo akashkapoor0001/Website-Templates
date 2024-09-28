@@ -2,7 +2,7 @@
 $active-color: #636FF1; /* Lighter color for active pop-up */
 $hover-bg-color: rgba(99, 102, 241, 0.15); /* Very light purple on hover */
 $active-bg-color: rgba(99, 102, 241, 0.25); /* Light background for the active state */
-$shadow-color: rgba(99, 102, 241, 0.4); /* Light shadow color for the pop-up effect */
+$shadow-color: 0 4px 10px rgba(99, 102, 241, 0.4); /* Light shadow color for the pop-up effect */
 
 /* Shared styles for all menu links */
 .menu-link {
