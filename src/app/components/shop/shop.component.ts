@@ -5,6 +5,7 @@ import { GalleriaModule } from 'primeng/galleria';
 @Component({
     selector: 'app-shop',
     templateUrl: './shop.component.html',
+    styleUrls: ['./shop.component.scss'],
     standalone: true,
     imports: [GalleriaModule],
     providers: [PhotoService]

@@ -49,7 +49,6 @@
 
 
 
-
 html {
     font-size: 14px;
 }
@@ -64,9 +63,28 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+#shop {
+    margin-top: 100px; // Adjust based on your navbar height
+    padding: 2rem; // Add padding for spacing
+    position: relative; // Ensure relative positioning for any child elements
+    overflow: hidden; // Prevent content from overflowing
+}
+
 .card {
     background: var(--surface-card);
-    padding: 2rem;
+    padding: 3rem; // Increased padding for a larger look
     border-radius: 10px;
     margin-bottom: 1rem;
+    max-width: 900px; // Adjusted max width
+    margin: 0 auto; // Center the card
+    border: none; // Remove any border
+    outline: none; // Remove any outline
+}
+
+.shop-title {
+    font-family: 'Spartan', sans-serif; /* Apply a unique font, customize as needed */
+    text-align: center; // Center the title
+    font-size: 2.5rem; // Adjust the font size as needed
+    font-weight: bold; // Make the font bold
+    margin-bottom: 1.5rem; // Add some space below the title
 }
