@@ -1,41 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { PhotoService } from './service/photoservice';
+import { GalleriaModule } from 'primeng/galleria';
 
 @Component({
-  selector: 'app-shop',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.scss'] // Fixed to `styleUrls`
+    selector: 'app-shop',
+    templateUrl: './shop.component.html',
+    standalone: true,
+    imports: [GalleriaModule],
+    providers: [PhotoService]
 })
 export class ShopComponent implements OnInit {
-  currentIndex = 0;
-  items = [
-    { imageSrc: 'assets/logo.png', altText: 'Template 1' },
-    { imageSrc: 'assets/logo1.png', altText: 'Template 2' },
-    { imageSrc: 'assets/ExpenseTracker.png', altText: 'Template 3' }
-  ];
+    images: any[] | undefined;
 
-  ngOnInit() {
-    const carouselItems = document.querySelectorAll('.carousel-item'); // Select the items
-    this.setActiveItem(carouselItems);
-    setInterval(() => {
-      this.moveToNextItem(carouselItems);
-    }, 3000); // Change item every 3 seconds
-  }
-  
-  moveToNextItem(carouselItems: NodeListOf<Element>) {
-    this.currentIndex = (this.currentIndex + 1) % this.items.length;
-    this.setActiveItem(carouselItems);
-  }
-  
-  setActiveItem(carouselItems: NodeListOf<Element>) {
-    carouselItems.forEach((item, index) => {
-      if (index === this.currentIndex) {
-        item.classList.add('active'); // Add 'active' class to center item
-      } else {
-        item.classList.remove('active'); // Remove 'active' class from others
-      }
-    });
-  }
+    responsiveOptions: any[] = [
+        {
+            breakpoint: '1024px',
+            numVisible: 5
+        },
+        {
+            breakpoint: '768px',
+            numVisible: 3
+        },
+        {
+            breakpoint: '560px',
+            numVisible: 1
+        }
+    ];
+
+    constructor(private photoService: PhotoService) {}
+
+    ngOnInit() {
+        this.photoService.getImages().then((images) => (this.images = images));
+    }
 }

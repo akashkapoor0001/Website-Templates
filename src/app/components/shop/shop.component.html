@@ -1,9 +1,18 @@
-<div id="shop" class="carousel-container relative bg-white min-h-screen pt-24"> <!-- Added padding-top -->
-    <div *ngFor="let item of items; let i = index" 
-         class="carousel-item"
-         [ngClass]="{'active': i === currentIndex, 'inactive': i !== currentIndex}">
-      <img [src]="item.imageSrc" 
-           [alt]="item.altText" 
-           class="carousel-img">
-    </div>
+<div id="shop" class="card">
+    <p-galleria 
+        [value]="images" 
+        [autoPlay]="true" 
+        [circular]="true" 
+        [responsiveOptions]="responsiveOptions" 
+        [numVisible]="5" 
+        [containerStyle]="{ 'max-width': '640px' }"> 
+            <ng-template pTemplate="item" let-item>
+                <img [src]="item.itemImageSrc" style="width: 100%;" />
+            </ng-template>
+            <ng-template pTemplate="thumbnail" let-item>
+                <div class="grid grid-nogutter justify-content-center">
+                    <img [src]="item.thumbnailImageSrc" />
+                </div>
+            </ng-template>
+    </p-galleria>
 </div>
