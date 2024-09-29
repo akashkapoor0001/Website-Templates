@@ -15,6 +15,9 @@ import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, si
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
+onBack() {
+this.router.navigate(['/']);
+}
 rememberMe: any;
 onForgotPassword() {
 throw new Error('Method not implemented.');

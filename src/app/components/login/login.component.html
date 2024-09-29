@@ -1,4 +1,19 @@
-<div class="min-h-screen flex items-center justify-center bg-black">
+<div class="min-h-screen flex items-center justify-center bg-black relative">
+  <!-- Back Button -->
+  <a (click)="onBack()" class="back-button">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-8 w-8 arrow-icon"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+    <span class="tooltip">Move Back</span> <!-- Tooltip text -->
+  </a>
+  
+  
   <div class="container">
     <div class="card" [class.flipped]="isFlipped">
       <!-- Login Form -->
@@ -101,4 +116,5 @@
     <div *ngIf="showAlert" [ngClass]="{'alert': true, 'alert-error': alertMessage.includes('Error')}" class="alert">
       {{ alertMessage }}
     </div>
-    
+  </div>
+</div>
