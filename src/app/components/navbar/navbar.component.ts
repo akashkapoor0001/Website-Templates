@@ -63,15 +63,15 @@ export class NavbarComponent {
     this.activeLink = link;
   }
 
-  checkLoginStatus() {
-    // Check localStorage for user data
-    const userData = localStorage.getItem('user');
-    if (userData) {
-      const user = JSON.parse(userData);
-      this.emailFirstName = user.firstName; // Set first letter from user data
-      this.isLoggedIn = true; // User is logged in
-    }
-  }  
+checkLoginStatus() {
+  // Check localStorage for user data
+  const userData = localStorage.getItem('user');
+  if (userData) {
+    const user = JSON.parse(userData);
+    this.emailFirstName = user.firstName; // Set first letter from user data
+    this.isLoggedIn = true; // User is logged in
+  }
+}
 
   logout() {
     localStorage.removeItem('user'); // Clear user data on logout
