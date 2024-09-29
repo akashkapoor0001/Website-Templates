@@ -105,22 +105,74 @@
 
   // On Back Button CSS
 
-  .back-button {
+//   .back-button {
+//     display: flex;
+//     align-items: center;
+//     cursor: pointer;
+//     text-decoration: none;
+//     margin-right: 10px; // Margin to the right
+//     position: relative; // For positioning the tooltip
+  
+//     .arrow-icon {
+//       fill: indigo; // Initial color
+//       transition: fill 0.3s ease; // Animation effect
+//       width: 32px; // Increased size
+//       height: 32px; // Increased size
+  
+//       &:hover {
+//         fill: #5a67d8; // Lighter shade of indigo on hover
+//       }
+//     }
+  
+//     .tooltip {
+//       visibility: hidden; // Initially hidden
+//       width: 80px; // Width of the tooltip
+//       background-color: rgba(0, 0, 0, 0.7); // Tooltip background color
+//       color: #fff; // Tooltip text color
+//       text-align: center; // Center text
+//       border-radius: 5px; // Rounded corners
+//       padding: 5px; // Padding
+//       position: absolute; // Absolute positioning
+//       bottom: 120%; // Position above the button
+//       left: 50%; // Center the tooltip
+//       transform: translate(-50%, -10%); // Adjust position to center and slightly raise
+//       opacity: 0; // Initial opacity
+//       transition: opacity 0.3s ease; // Fade-in effect
+//       z-index: 1; // Ensure it appears above other elements
+//       margin-left: 25px;
+//     }
+  
+//     &:hover .tooltip {
+//       visibility: visible; // Show tooltip on hover
+//       opacity: 1; // Fade in tooltip
+//     }
+//   }
+  
+
+
+.back-button {
     display: flex;
     align-items: center;
     cursor: pointer;
-    text-decoration: none;
-    margin-right: 10px; // Margin to the right
-    position: relative; // For positioning the tooltip
-  
+    position: fixed; // Fixed position to avoid shifting
+    top: 20px; // Position at the top
+    left: 20px; // Adjust left for desktop view
+    z-index: 10; // Ensure it stays above other elements
+    margin-right: 10px; // Add margin to the right
+    padding: 4px; // Add padding to the button
+    border: 2px solid #5a67d8; // Outer line color
+    border-radius: 50%; // Rounded border
+    background-color: transparent; // Transparent background
+    transition: background-color 0.3s ease; // Animation effect
+
     .arrow-icon {
-      fill: indigo; // Initial color
+      fill: #5a67d8; // Initial color
       transition: fill 0.3s ease; // Animation effect
       width: 32px; // Increased size
       height: 32px; // Increased size
   
       &:hover {
-        fill: #5a67d8; // Lighter shade of indigo on hover
+        fill: indigo; // Lighter shade of indigo on hover
       }
     }
   
@@ -133,13 +185,12 @@
       border-radius: 5px; // Rounded corners
       padding: 5px; // Padding
       position: absolute; // Absolute positioning
-      bottom: 120%; // Position above the button
+      bottom: 80%; // Position above the button
       left: 50%; // Center the tooltip
       transform: translate(-50%, -10%); // Adjust position to center and slightly raise
       opacity: 0; // Initial opacity
       transition: opacity 0.3s ease; // Fade-in effect
       z-index: 1; // Ensure it appears above other elements
-      margin-left: 25px;
     }
   
     &:hover .tooltip {
@@ -147,4 +198,17 @@
       opacity: 1; // Fade in tooltip
     }
   }
+  
+  // Mobile Styles Only
+  @media (max-width: 768px) {
+    .back-button {
+      left: 14px; // Adjust for mobile to keep it within the viewport
+      top: 10px; // Position closer to the top-left corner
+  
+      .tooltip {
+        bottom: 130%; // Adjust tooltip position for better visibility on mobile
+      }
+    }
+  }
+  
   
