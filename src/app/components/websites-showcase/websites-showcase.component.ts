@@ -12,3 +12,4 @@ export class WebsitesShowcaseComponent implements OnInit {
     console.log('Component initialized'); // Log to confirm the component is loaded
   }
 }
+
