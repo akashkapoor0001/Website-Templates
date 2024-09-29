@@ -50,6 +50,18 @@ $shadow-color: 0 4px 10px rgba(99, 102, 241, 0.4); /* Light shadow color for the
   text-decoration: none;
 }
 
+@media (max-width: 768px) {
+  .menu-link {
+    padding: 0.5rem 0.75rem; /* Smaller padding on mobile */
+  }
+
+  .login-btn {
+    display: flex;
+    padding: 0.5rem 1rem; /* Smaller padding on mobile */
+    margin-top: 5px;
+  }
+}
+
 // Profile icon CSS
 
 .profile-icon {
