@@ -1,13 +1,15 @@
 .box {
-  height: 200px; // Adjusted height for less height
-  width: 100%; // Full width of the grid cell
-  margin: 10px; // Margin around each box for spacing
   position: relative;
   overflow: hidden; // Ensures the overlay and blur effects are contained
   transition: transform 0.3s ease, box-shadow 0.3s ease; // Transition effect for scaling and shadow
 
   // Adding shadow effect
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); // Adjust the values for shadow intensity
+
+  // Responsive height adjustment
+  width: 100%; // Full width of the grid cell
+  aspect-ratio: 1; // Maintains a square shape
+  margin: 10px; // Margin around each box for spacing
 
   &:hover {
     transform: scale(1.05); // Slightly enlarges the box on hover
@@ -18,6 +20,7 @@
 .template-image {
   width: 100%;
   height: 100%;
+  object-fit: cover; // Ensures the image covers the box without distortion
   transition: filter 0.3s ease; // Transition effect for the blur
 }
 
@@ -38,13 +41,13 @@
   color: white; // White text color for contrast
 
   h1 {
-    font-size: 2rem; // Adjust font size as necessary
+    font-size: 1.5rem; // Adjust font size for H1 to fit in smaller boxes
     font-weight: bold;
     margin-bottom: 5px;
   }
 
   p {
-    font-size: 1rem; // Adjust font size as necessary
+    font-size: 0.9rem; // Adjust font size for P to fit in smaller boxes
   }
 }
 
@@ -54,4 +57,29 @@
 
 .box:hover .overlay {
   opacity: 1; // Shows the overlay on hover
+}
+
+// Responsive design for smaller screens
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr); // Show 2 boxes per row on smaller screens
+  }
+
+  .box {
+    aspect-ratio: 1; // Maintain square shape for boxes
+    margin: 5px; // Reduce margin for smaller screens
+  }
+
+  h2 {
+    font-size: 2.5rem; // Adjust H2 size for mobile
+  }
+
+  p {
+    font-size: 0.8rem; // Adjust paragraph font size for mobile
+  }
+}
+
+#templates {
+  display: flex;
+  flex-wrap: wrap; // Wrap the boxes to the next line
 }
