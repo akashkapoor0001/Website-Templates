@@ -29,13 +29,13 @@
           </div>
           <div class="flex items-center justify-between">
             <label for="remember" class="text-indigo-400">
-              <input type="checkbox" id="remember" class="mr-2" /> Remember Me
+              <input type="checkbox" id="remember" [(ngModel)]="rememberMe" class="mr-2" /> Remember Me
             </label>
-            <a href="#" class="text-indigo-400 hover:text-indigo-300 mb-2">Forgot Password?</a>
+            <a href="#" (click)="onForgotPassword()" class="text-indigo-400 hover:text-indigo-300 mb-2">Forgot Password?</a>
           </div>
           <div class="mb-8">
             <label for="no-account" class="block text-white mt-3 mb-2">Don't have an account?</label>
-            <button (click)="onRegister($event)" type="button" class="register-button">Register</button>
+            <button (click)="toggleForm()" type="button" class="register-button">Register</button>
           </div>
           <!-- Google Sign-In Button -->
           <button
@@ -96,5 +96,9 @@
         </form>
       </div>
     </div>
-  </div>
-</div>
+
+    <!-- Alert Message for the login and the register pages-->
+    <div *ngIf="showAlert" [ngClass]="{'alert': true, 'alert-error': alertMessage.includes('Error')}" class="alert">
+      {{ alertMessage }}
+    </div>
+    

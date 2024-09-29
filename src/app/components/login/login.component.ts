@@ -5,7 +5,8 @@
 // import { Router } from '@angular/router';
 // import { firebaseConfig } from '../../../firebase-config';
 // import { initializeApp } from 'firebase/app';
-// import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+// import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+
 // @Component({
 //   selector: 'app-login',
 //   standalone: true,
@@ -39,21 +40,34 @@
 //       });
 //   }
 
-//     // Handle Registration
-//     onRegister(event: Event) {
-//       event.preventDefault();
-//       createUserWithEmailAndPassword(this.auth, this.email, this.password)
-//         .then((userCredential) => {
-//           console.log('Registration successful:', userCredential.user);
-//           this.toggleForm(); // Toggle back to the login form after registration
-//         })
-//         .catch((error) => {
-//           console.error('Error during registration:', error.message);
-//         });
+//   // Google Sign-In Method
+//   onGoogleLogin() {
+//     const provider = new GoogleAuthProvider();
+//     signInWithPopup(this.auth, provider)
+//       .then((result) => {
+//         console.log('Google Login successful:', result.user);
+//         this.router.navigate(['/']); // Redirect to the homepage after successful login
+//       })
+//       .catch((error) => {
+//         console.error('Error during Google login:', error.message);
+//       });
+//   }
 
-//         this.toggleForm();
-//     }
+//   onRegister(event: Event) {
+//     event.preventDefault();
+//     createUserWithEmailAndPassword(this.auth, this.email, this.password)
+//       .then((userCredential) => {
+//         console.log('Registration successful:', userCredential.user);
+//         this.toggleForm(); // Toggle back to the login form after registration
+//       })
+//       .catch((error) => {
+//         console.error('Error during registration:', error.message);
+//       });
+
+//       this.toggleForm();
+//   }
 // }
+
 
 
 
@@ -86,10 +100,16 @@ import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, si
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
+rememberMe: any;
+onForgotPassword() {
+throw new Error('Method not implemented.');
+}
   email: string = '';
   password: string = '';
   name: string = '';
   isFlipped = false;
+  alertMessage: string = '';
+  showAlert: boolean = false;
 
   app = initializeApp(firebaseConfig);
   auth = getAuth();
@@ -104,23 +124,26 @@ export class LoginComponent {
     signInWithEmailAndPassword(this.auth, this.email, this.password)
       .then((userCredential) => {
         console.log('Login successful:', userCredential.user);
+        this.showAlertWithMessage('Login successful!');
         this.router.navigate(['/']); // Redirect to the homepage upon successful login
       })
       .catch((error) => {
         console.error('Error during login:', error.message);
+        this.showAlertWithMessage('Error during login: ' + error.message);
       });
   }
 
-  // Google Sign-In Method
   onGoogleLogin() {
     const provider = new GoogleAuthProvider();
     signInWithPopup(this.auth, provider)
       .then((result) => {
         console.log('Google Login successful:', result.user);
+        this.showAlertWithMessage('Google Login successful!');
         this.router.navigate(['/']); // Redirect to the homepage after successful login
       })
       .catch((error) => {
         console.error('Error during Google login:', error.message);
+        this.showAlertWithMessage('Error during Google login: ' + error.message);
       });
   }
 
@@ -129,12 +152,20 @@ export class LoginComponent {
     createUserWithEmailAndPassword(this.auth, this.email, this.password)
       .then((userCredential) => {
         console.log('Registration successful:', userCredential.user);
+        this.showAlertWithMessage('Registration successful!');
         this.toggleForm(); // Toggle back to the login form after registration
       })
       .catch((error) => {
         console.error('Error during registration:', error.message);
+        this.showAlertWithMessage('Error during registration: ' + error.message);
       });
+  }
 
-      this.toggleForm();
+  showAlertWithMessage(message: string) {
+    this.alertMessage = message;
+    this.showAlert = true;
+    setTimeout(() => {
+      this.showAlert = false;
+    }, 3000); // Alert will disappear after 3 seconds
   }
 }
