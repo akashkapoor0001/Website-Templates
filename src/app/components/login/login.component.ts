@@ -52,12 +52,33 @@ throw new Error('Method not implemented.');
       });
   }  
 
+  // onGoogleLogin() {
+  //   const provider = new GoogleAuthProvider();
+  //   signInWithPopup(this.auth, provider)
+  //     .then((result) => {
+  //       console.log('Google Login successful:', result.user);
+  //       this.showAlertWithMessage('Google Login successful!');
+  //       this.router.navigate(['/']); // Redirect to the homepage after successful login
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error during Google login:', error.message);
+  //       this.showAlertWithMessage('Error during Google login: ' + error.message);
+  //     });
+  // }
+
   onGoogleLogin() {
     const provider = new GoogleAuthProvider();
     signInWithPopup(this.auth, provider)
       .then((result) => {
         console.log('Google Login successful:', result.user);
         this.showAlertWithMessage('Google Login successful!');
+
+        // Extracting first initial from email
+        const email = result.user.email;
+        const firstName = email ? email.charAt(0).toUpperCase() : '';
+
+        // Store user email and first initial in localStorage
+        localStorage.setItem('user', JSON.stringify({ email, firstName }));
         this.router.navigate(['/']); // Redirect to the homepage after successful login
       })
       .catch((error) => {
