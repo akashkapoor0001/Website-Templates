@@ -15,6 +15,14 @@ import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, si
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
+
+  email: string = '';
+  password: string = '';
+  name: string = '';
+  isFlipped = false;
+  alertMessage: string = '';
+  showAlert: boolean = false;
+
 onBack() {
 this.router.navigate(['/']);
 }
@@ -22,12 +30,7 @@ rememberMe: any;
 onForgotPassword() {
 throw new Error('Method not implemented.');
 }
-  email: string = '';
-  password: string = '';
-  name: string = '';
-  isFlipped = false;
-  alertMessage: string = '';
-  showAlert: boolean = false;
+
 
   app = initializeApp(firebaseConfig);
   auth = getAuth();
@@ -43,14 +46,25 @@ throw new Error('Method not implemented.');
       .then((userCredential) => {
         console.log('Login successful:', userCredential.user);
         this.showAlertWithMessage('Login successful!');
-        localStorage.setItem('user', JSON.stringify({ email: this.email, firstName: this.email.charAt(0) })); // Store first letter of email
-        this.router.navigate(['/']); // Redirect to the homepage upon successful login
+        localStorage.setItem('user', JSON.stringify({ email: this.email, firstName: this.email.charAt(0) }));
+        this.showAlert = true; // Show alert
+        setTimeout(() => {
+          this.router.navigate(['/']); // Redirect after 2 seconds
+        }, 2000);
       })
       .catch((error) => {
         console.error('Error during login:', error.message);
         this.showAlertWithMessage('Error during login: ' + error.message);
       });
-  }  
+  }
+
+  showAlertWithMessage(message: string) {
+    this.alertMessage = message;
+    this.showAlert = true;
+    setTimeout(() => {
+      this.showAlert = false;
+    }, 3000);
+  }
 
   // onGoogleLogin() {
   //   const provider = new GoogleAuthProvider();
@@ -101,11 +115,5 @@ throw new Error('Method not implemented.');
       });
   }
 
-  showAlertWithMessage(message: string) {
-    this.alertMessage = message;
-    this.showAlert = true;
-    setTimeout(() => {
-      this.showAlert = false;
-    }, 3000); // Alert will disappear after 3 seconds
-  }
+  
 }
