@@ -1,18 +1,33 @@
 .relative {
-    position: relative;
-  }
-  
-  .absolute {
-    position: absolute;
-    top: 10%;
-    left: 12%;
-  }
-  
-  img {
-    max-width: 100%;
-  }
-  
-  .carousel-item {
-    transition: opacity 0.5s ease, filter 0.5s ease;
-  }
-  
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+  top: 10%;
+  left: 12%;
+}
+
+img {
+  max-width: 100%;
+}
+
+.box {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ccc; /* Add border for better visibility */
+  transition: transform 0.3s ease; /* Smooth scaling effect */
+}
+
+.box img {
+  width: 100%; /* Ensures the image takes full width of the box */
+  transition: transform 0.3s ease; /* Smooth scaling effect for image */
+}
+
+.box:hover {
+  transform: scale(1.05); /* Scale up on hover */
+}
+
+.box:hover img {
+  transform: scale(1.1); /* Slightly scale up image on hover */
+}
