@@ -4,7 +4,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease; // Transition effect for scaling and shadow
 
   // Adding shadow effect
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); // Adjust the values for shadow intensity
+  box-shadow: 0 4px 10px rgba(96, 21, 200, 0.618); // Adjust the values for shadow intensity
 
   // Responsive height adjustment
   width: 100%; // Full width of the grid cell
@@ -68,6 +68,12 @@
   .box {
     aspect-ratio: 1; // Maintain square shape for boxes
     margin: 5px; // Reduce margin for smaller screens
+  }
+
+  h1 {
+    font-size: 1.5rem; // Adjust font size for H1 to fit in smaller boxes
+    font-weight: bold;
+    margin-bottom: 5px;
   }
 
   h2 {
