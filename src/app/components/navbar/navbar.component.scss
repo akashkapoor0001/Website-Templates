@@ -49,3 +49,63 @@ $shadow-color: 0 4px 10px rgba(99, 102, 241, 0.4); /* Light shadow color for the
   box-shadow: 0 4px 10px $shadow-color;
   text-decoration: none;
 }
+
+// Profile icon CSS
+
+.profile-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px; /* Adjust size as needed */
+  height: 40px; /* Adjust size as needed */
+  background-color: #4A5568; /* Background color for the circle */
+  border-radius: 50%; /* Makes it circular */
+  color: white; /* Text color */
+  font-size: 20px; /* Font size for the initials */
+  font-weight: bold; /* Make the initials bold */
+}
+
+.initial {
+  text-align: center; /* Center the initials */
+  text-transform: uppercase; /* Uppercase the initials */
+}
+
+
+// Logout Button CSS
+
+.logout-button {
+  cursor: pointer;
+  color: #ad1414;
+  font-weight: bold;
+  text-decoration: none;
+  border: 2px solid #ff0000;
+  border-radius: 20px;
+  padding: 0.32rem 0.95rem;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  margin-left: 20px;
+}
+
+.logout-button:hover {
+  background-color: #ff0000;
+  color: white;
+  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.4);
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .profile-icon {
+    width: 35px; /* Smaller icon on mobile */
+    height: 35px; /* Smaller icon on mobile */
+    font-size: 16px; /* Smaller font size on mobile */
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+
+  .logout-button {
+    font-size: 14px; /* Smaller button text on mobile */
+    margin-top: 10px;
+  }
+}
+
+

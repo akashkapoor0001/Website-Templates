@@ -43,13 +43,14 @@ throw new Error('Method not implemented.');
       .then((userCredential) => {
         console.log('Login successful:', userCredential.user);
         this.showAlertWithMessage('Login successful!');
+        localStorage.setItem('user', JSON.stringify({ email: this.email, firstName: this.email.charAt(0) })); // Store first letter of email
         this.router.navigate(['/']); // Redirect to the homepage upon successful login
       })
       .catch((error) => {
         console.error('Error during login:', error.message);
         this.showAlertWithMessage('Error during login: ' + error.message);
       });
-  }
+  }  
 
   onGoogleLogin() {
     const provider = new GoogleAuthProvider();

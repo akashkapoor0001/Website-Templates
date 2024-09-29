@@ -15,8 +15,21 @@
       <a href="#shop" class="menu-link" [class.active]="activeLink === '#shop'" (click)="setActiveLink('#shop')">Shop</a>
       <a href="#contact" class="menu-link" [class.active]="activeLink === '#contact'" (click)="setActiveLink('#contact')">Contact</a>
 
-      <!-- Login Button -->
-      <a routerLink="/login" class="login-btn">Log In / Register</a>
+      <!-- Conditional Rendering for Login/Register or Profile -->
+<!-- Conditional Rendering for Login/Register or Profile -->
+<ng-container *ngIf="isLoggedIn; else loginRegister">
+  <div class="flex items-center">
+    <div class="profile-icon">
+      <span class="initial">{{ emailFirstName }}</span>
+    </div>
+    <button (click)="logout()" class="logout-button">Logout</button>
+  </div>
+</ng-container>
+
+
+      <ng-template #loginRegister>
+        <a routerLink="/login" class="login-btn">Log In / Register</a>
+      </ng-template>
     </div>
 
     <!-- Mobile Menu Button -->
@@ -40,7 +53,17 @@
     <a (click)="closeMenu()" href="#shop" class="block menu-link">Shop</a>
     <a (click)="closeMenu()" href="#contact" class="block menu-link">Contact</a>
 
-    <!-- Mobile Login Button -->
-    <a (click)="closeMenu()" routerLink="/login" class="block login-btn mt-4">Log In / Register</a>
+    <!-- Mobile Conditional Rendering for Login/Register or Profile -->
+    <ng-container *ngIf="isLoggedIn; else loginRegister">
+      <div class="flex items-center">
+        <div class="profile-icon">
+          <span class="initial">{{ emailFirstName }}</span>
+        </div>
+        <button (click)="logout()" class="logout-button">Logout</button>
+      </div>
+    </ng-container>
+    <ng-template #mobileLoginRegister>
+      <a (click)="closeMenu()" routerLink="/login" class="block login-btn mt-4">Log In / Register</a>
+    </ng-template>
   </div>
 </nav>
