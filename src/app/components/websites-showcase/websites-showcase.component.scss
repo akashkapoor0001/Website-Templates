@@ -1,33 +1,57 @@
-.relative {
-  position: relative;
-}
-
-.absolute {
-  position: absolute;
-  top: 10%;
-  left: 12%;
-}
-
-img {
-  max-width: 100%;
-}
-
 .box {
+  height: 200px; // Adjusted height for less height
+  width: 100%; // Full width of the grid cell
+  margin: 10px; // Margin around each box for spacing
   position: relative;
-  overflow: hidden;
-  border: 1px solid #ccc; /* Add border for better visibility */
-  transition: transform 0.3s ease; /* Smooth scaling effect */
+  overflow: hidden; // Ensures the overlay and blur effects are contained
+  transition: transform 0.3s ease, box-shadow 0.3s ease; // Transition effect for scaling and shadow
+
+  // Adding shadow effect
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); // Adjust the values for shadow intensity
+
+  &:hover {
+    transform: scale(1.05); // Slightly enlarges the box on hover
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); // Increase shadow on hover
+  }
 }
 
-.box img {
-  width: 100%; /* Ensures the image takes full width of the box */
-  transition: transform 0.3s ease; /* Smooth scaling effect for image */
+.template-image {
+  width: 100%;
+  height: 100%;
+  transition: filter 0.3s ease; // Transition effect for the blur
 }
 
-.box:hover {
-  transform: scale(1.05); /* Scale up on hover */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); // Semi-transparent black background
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; // Initially hidden
+  transition: opacity 0.3s ease; // Transition for the overlay appearance
+  text-align: center; // Center the text
+  color: white; // White text color for contrast
+
+  h1 {
+    font-size: 2rem; // Adjust font size as necessary
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  p {
+    font-size: 1rem; // Adjust font size as necessary
+  }
 }
 
-.box:hover img {
-  transform: scale(1.1); /* Slightly scale up image on hover */
+.box:hover .template-image {
+  filter: blur(5px); // Blurs the image on hover
+}
+
+.box:hover .overlay {
+  opacity: 1; // Shows the overlay on hover
 }
