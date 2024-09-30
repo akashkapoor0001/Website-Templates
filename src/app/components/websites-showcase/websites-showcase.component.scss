@@ -24,6 +24,64 @@
   transition: filter 0.3s ease; /* Transition effect for the blur */
 }
 
+// Template Button CSS for Viewing it
+
+
+/* Button container for alignment */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px; /* Space between text and button */
+}
+
+/* Styling for small rectangular button */
+.template-button {
+  background-color: #eb3636; /* Indigo color */
+  color: white;
+  border: none;
+  border-radius: 4px; /* Small rounded corners */
+  width: 100px; /* Rectangular shape */
+  height: 40px;
+  font-size: 0.8rem; /* Adjust text size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition effects for hover */
+}
+
+/* Hover animation only */
+.template-button:hover {
+  transform: scale(1.05); /* Slight scaling on hover */
+  background-color: rgb(163, 13, 13);
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .template-button {
+    width: 80px; /* Smaller button for mobile */
+    height: 35px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .button-container {
+    margin-top: 5px; /* Reduce margin between text and button on smaller screens */
+  }
+
+  .template-button {
+    width: 70px;
+    height: 30px;
+    font-size: 0.6rem;
+    background-color: #eb3636;
+  }
+
+  .template-button:hover {
+    background-color: rgb(163, 13, 13);
+  }
+}
+
 .overlay {
   position: absolute;
   top: 0;
