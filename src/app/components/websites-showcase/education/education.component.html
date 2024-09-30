@@ -1,1 +1,74 @@
-<p>education works!</p>
+<div
+  id="education-page"
+  class="min-h-screen flex flex-col items-center justify-center p-10 bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-500"
+>
+  <!-- Theme Toggle Button -->
+  <button
+    (click)="toggleTheme()"
+    class="absolute top-4 right-4 bg-gray-200 dark:bg-gray-800 text-black dark:text-white p-2 rounded-full"
+  >
+    {{ darkMode ? "Light Mode" : "Dark Mode" }}
+  </button>
+
+  <!-- Page Heading -->
+  <h1 class="text-6xl font-bold mb-10 text-center">Education Templates</h1>
+  <p class="text-xl mb-8 text-center">
+    Explore different templates for education-related websites.
+  </p>
+
+  <!-- Template Showcase Grid -->
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl"
+  >
+    <!-- Template Box -->
+    <div
+    class="template-box bg-white dark:bg-gray-800 p-6 shadow-lg rounded-lg transition-transform duration-300 ease-in-out hover:scale-105"
+  >
+    <img
+      src="assets/template1.png"
+      alt="Template 1"
+      class="w-full h-40 object-cover rounded-lg mb-4"
+    />
+    <h2 class="text-2xl font-bold mb-2">Online Learning</h2>
+    <p class="text-sm mb-4">Perfect for online courses and educational platforms.</p>
+    <button
+      class="btn-view bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors duration-300"
+    >
+      View Template
+    </button>
+  </div>
+  <div
+  class="template-box bg-white dark:bg-gray-800 p-6 shadow-lg rounded-lg transition-transform duration-300 ease-in-out hover:scale-105"
+>
+  <img
+    src="assets/template1.png"
+    alt="Template 1"
+    class="w-full h-40 object-cover rounded-lg mb-4"
+  />
+  <h2 class="text-2xl font-bold mb-2">Online Learning</h2>
+  <p class="text-sm mb-4">Perfect for online courses and educational platforms.</p>
+  <button
+    class="btn-view bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors duration-300"
+  >
+    View Template
+  </button>
+</div>
+<div
+class="template-box bg-white dark:bg-gray-800 p-6 shadow-lg rounded-lg transition-transform duration-300 ease-in-out hover:scale-105"
+>
+<img
+  src="assets/template1.png"
+  alt="Template 1"
+  class="w-full h-40 object-cover rounded-lg mb-4"
+/>
+<h2 class="text-2xl font-bold mb-2">Online Learning</h2>
+<p class="text-sm mb-4">Perfect for online courses and educational platforms.</p>
+<button
+  class="btn-view bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors duration-300"
+>
+  View Template
+</button>
+</div>
+    <!-- Repeat similar blocks for other templates -->
+  </div>
+</div>
