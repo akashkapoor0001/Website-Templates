@@ -1,0 +1,71 @@
+/* Global styles for light and dark mode */
+:root {
+    /* Light Mode Colors */
+    --background-color: #f9f9f9;
+    --text-color: #333;
+    --box-background-color: #fff;
+    --box-shadow: rgba(0, 0, 0, 0.1);
+  }
+  
+  .dark {
+    /* Dark Mode Colors */
+    --background-color: #1e1e1e;
+    --text-color: #f9f9f9;
+    --box-background-color: #2e2e2e;
+    --box-shadow: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Apply the background and text color globally */
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  #ecommerce-page {
+    padding: 20px;
+    min-height: 100vh;
+  
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+  }
+  
+  /* Styling for template boxes */
+  .template-box {
+    background-color: var(--box-background-color);
+    color: var(--text-color);
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px var(--box-shadow);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+  
+  /* Add additional styles to ensure responsiveness */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+  
+    .template-box {
+      padding: 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.8rem;
+    }
+  
+    .template-box {
+      padding: 10px;
+    }
+  }
+  
