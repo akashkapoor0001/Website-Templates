@@ -1,15 +1,17 @@
-import { Component, AfterViewInit, Renderer2 } from '@angular/core';
+import { Component, AfterViewInit, Renderer2, OnInit } from '@angular/core';
 import { gsap } from 'gsap';
+import { Router, NavigationEnd } from '@angular/router'; // Import Router and NavigationEnd
+import { filter } from 'rxjs/operators'; // Import filter
 
 @Component({
   selector: 'app-ecommerce',
   templateUrl: './e-commerce.component.html',
   styleUrls: ['./e-commerce.component.scss']
 })
-export class ECommerceComponent implements AfterViewInit {
+export class ECommerceComponent implements AfterViewInit, OnInit {
   darkMode = false;
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2, private router: Router) {}
 
   ngOnInit(): void {
     // Check if user already has a preferred theme from localStorage
@@ -18,6 +20,13 @@ export class ECommerceComponent implements AfterViewInit {
       this.darkMode = true;
       this.renderer.addClass(document.body, 'dark'); // Apply dark theme to the body
     }
+
+    // Scroll to top when the component is loaded
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        window.scrollTo(0, 0); // Scroll to the top of the page on navigation
+      });
   }
 
   ngAfterViewInit(): void {
