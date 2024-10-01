@@ -170,22 +170,3 @@
     font-size: 1.5rem; /* Further adjust paragraph font size for extra small screens */
   }
 }
-
-
-.observe-box {
-  opacity: 0; /* Hidden initially */
-  transform: translateY(50px); /* Move down initially */
-  transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
-}
-
-.observe-box.animate {
-  opacity: 1; /* Fully visible */
-  transform: translateY(0); /* Back to original position */
-}
-
-@media (max-width: 768px) {
-  .observe-box {
-    /* Optionally tweak the speed or distance for mobile */
-    transition: opacity 0.4s ease, transform 0.4s ease;
-  }
-}
