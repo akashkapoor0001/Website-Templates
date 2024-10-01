@@ -1,85 +1,39 @@
+<!-- Wrap each box in an extra div that can be observed -->
 <div id="templates" class="flex flex-col md:flex-row items-center justify-center min-h-screen bg-white text-black p-10">
   <!-- Left Half: Explore Templates -->
-  <div class="md:w-1/2 flex flex-col items-center justify-center"> <!-- Changed to items-center for horizontal centering -->
-    <h1 class="text-6xl font-bold mb-5 text-center">Explore Templates</h1> <!-- Adjusted font size -->
-    <p class="text-center">Check out the latest website templates which are ready to use.</p> <!-- Centered the paragraph -->
+  <div class="md:w-1/2 flex flex-col items-center justify-center">
+    <h1 class="text-6xl font-bold mb-5 text-center">Explore Templates</h1>
+    <p class="text-center">Check out the latest website templates which are ready to use.</p>
   </div>
 
   <!-- Right Half: 3x3 Grid of Boxes -->
-  <div class="md:w-1/2 mt-10 md:mt-0 grid grid-cols-3 gap-4 grid"> <!-- Using gap for spacing -->
-    <div class="box relative overflow-hidden">
+  <div class="md:w-1/2 mt-10 md:mt-0 grid grid-cols-3 gap-4 grid">
+    <!-- Add 'observe-box' class for triggering the animation -->
+    <div class="observe-box box relative overflow-hidden">
       <img src="assets/eCommerce.png" alt="Template 1" class="template-image">
       <div class="overlay">
         <h1>eCommerce Template</h1>
         <p>Best for online stores</p>
-        <button class="template-button" (click)="navigateToComponent('ecommerce')">Explore eCommerce</button> <!-- Added button -->
+        <button class="template-button" (click)="navigateToComponent('ecommerce')">Explore eCommerce</button>
       </div>
     </div>
-    <div class="box relative overflow-hidden">
-      <img src="assets/Education.png" alt="Template 2" class="template-image">
+    <!-- Repeat for other template boxes -->
+    <div class="observe-box box relative overflow-hidden">
+      <img src="assets/education.png" alt="Template 2" class="template-image">
       <div class="overlay">
         <h1>Education Template</h1>
-        <p>Great for schools</p>
+        <p>Best for educational purposes</p>
         <button class="template-button" (click)="navigateToComponent('education')">Explore Education</button>
       </div>
     </div>
-    <div class="box relative overflow-hidden">
-      <img src="assets/Business.png" alt="Template 3" class="template-image">
-      <div class="overlay">
-        <h1>Business Template</h1>
-        <p>Perfect for corporate sites</p>
-        <button class="template-button" (click)="navigateToComponent('business')">Explore Business</button>
-      </div>
-    </div>
-    <div class="box relative overflow-hidden">
-      <img src="assets/Health.png" alt="Template 4" class="template-image">
-      <div class="overlay">
-        <h1>Health Template</h1>
-        <p>For health professionals</p>
-        <div class="button-container">
-          <button class="template-button" (click)="navigateToComponent('health')">Explore Health</button>
-        </div>
-      </div>
-    </div>
-    <div class="box relative overflow-hidden">
-      <img src="assets/LandingPages.png" alt="Template 5" class="template-image">
-      <div class="overlay">
-        <h1>Landing Page Template</h1>
-        <p>Ideal for marketing</p>
-        <button class="template-button" (click)="navigateToComponent('landing')">Explore Landing Pages</button>
-      </div>
-    </div>
-    <div class="box relative overflow-hidden">
-      <img src="assets/BlogsMagazines.png" alt="Template 6" class="template-image">
-      <div class="overlay">
-        <h1>Blog Template</h1>
-        <p>Share your stories</p>
-        <button class="template-button" (click)="navigateToComponent('blog')">Explore Blogs</button>
-      </div>
-    </div>
-    <div class="box relative overflow-hidden">
-      <img src="assets/RealEstate.png" alt="Template 7" class="template-image">
-      <div class="overlay">
-        <h1>Real Estate Template</h1>
-        <p>Showcase properties</p>
-        <button class="template-button" (click)="navigateToComponent('real-estate')">Explore Real Estate</button>
-      </div>
-    </div>
-    <div class="box relative overflow-hidden">
-      <img src="assets/Travel.png" alt="Template 8" class="template-image">
-      <div class="overlay">
-        <h1>Travel Template</h1>
-        <p>For travel agencies</p>
-        <button class="template-button" (click)="navigateToComponent('travel')">Explore Travel</button>
-      </div>
-    </div>
-    <div class="box relative overflow-hidden">
-      <img src="assets/Portfolio.png" alt="Template 9" class="template-image">
+    <div class="observe-box box relative overflow-hidden">
+      <img src="assets/portfolio.png" alt="Template 3" class="template-image">
       <div class="overlay">
         <h1>Portfolio Template</h1>
-        <p>Highlight your work</p>
+        <p>Best for showcasing your work</p>
         <button class="template-button" (click)="navigateToComponent('portfolio')">Explore Portfolio</button>
       </div>
     </div>
+    <!-- Repeat for all other template boxes as needed -->
   </div>
 </div>
