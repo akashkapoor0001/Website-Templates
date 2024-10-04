@@ -9,6 +9,16 @@ import { filter } from 'rxjs/operators'; // Import filter
   styleUrls: ['./e-commerce.component.scss']
 })
 export class ECommerceComponent implements AfterViewInit, OnInit {
+  navigateToComponent(arg0: string) {
+    // Show any loading message or animation if needed
+    console.log('Navigating to payment gateway in 3 seconds...');
+    
+    // Set a timeout to delay the navigation
+    setTimeout(() => {
+      this.router.navigate(['/payment-gateway']);
+    }, 3000); // Delay of 3000 milliseconds (3 seconds)
+  }
+  
   darkMode = false;
 
   constructor(private renderer: Renderer2, private router: Router) {}

@@ -1,0 +1,21 @@
+.payment-container {
+    transition: background-color 0.3s ease;
+  }
+  
+  input {
+    transition: border-color 0.3s ease;
+  }
+  
+  input:focus {
+    border-color: #4f46e5; /* Tailwind indigo-700 */
+    outline: none;
+  }
+  
+  button {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  button:hover {
+    transform: scale(1.05);
+  }
+  

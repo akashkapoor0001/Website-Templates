@@ -11,7 +11,7 @@ import { BlogComponent } from './components/websites-showcase/blog/blog.componen
 import { RealEstateComponent } from './components/websites-showcase/real-estate/real-estate.component';
 import { TravelComponent } from './components/websites-showcase/travel/travel.component';
 import { PortfolioComponent } from './components/websites-showcase/portfolio/portfolio.component';
-
+import { PaymentGatewayComponent } from './components/payment-gateway/payment-gateway.component';
 
 export const routes: Routes = [
     {path: '', component: IntroComponent},
@@ -25,6 +25,7 @@ export const routes: Routes = [
     {path: 'real-estate', component: RealEstateComponent},
     {path: 'travel', component: TravelComponent},
     {path: 'portfolio', component: PortfolioComponent},
+    {path: 'payment-gateway', component: PaymentGatewayComponent},
     {path: '', redirectTo: '/', pathMatch: 'full'}
 ];
 
