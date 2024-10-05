@@ -1,21 +1,61 @@
 .payment-container {
-    transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  transition: background-color 0.3s ease;
+}
+
+.payment-info {
+  padding-right: 50px;
+}
+
+.payment-info h2 {
+  animation: fadeInLeft 1.5s ease;
+}
+
+.payment-info p {
+  animation: fadeInLeft 1.8s ease;
+}
+
+.payment-form-container {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  animation: fadeInRight 1.5s ease;
+}
+
+input, button {
+  transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+input:focus {
+  border-color: #4f46e5;
+  outline: none;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
   }
-  
-  input {
-    transition: border-color 0.3s ease;
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
-  
-  input:focus {
-    border-color: #4f46e5; /* Tailwind indigo-700 */
-    outline: none;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
   }
-  
-  button {
-    transition: background-color 0.3s ease, transform 0.2s ease;
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
-  
-  button:hover {
-    transform: scale(1.05);
-  }
-  
+}

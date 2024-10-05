@@ -1,18 +1,32 @@
-<div class="payment-container flex flex-col items-center justify-center min-h-screen p-10 bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-500">
-    <h2 class="text-4xl font-bold mb-6">Payment Gateway</h2>
-    
-    <form (submit)="onSubmit($event)" class="w-full max-w-lg bg-gray-100 p-8 rounded-lg shadow-lg">
-      <div class="mb-4">
+<div class="payment-container flex flex-col md:flex-row items-center justify-center min-h-screen p-4 bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-500">
+  <!-- Left-hand side text content -->
+  <div class="payment-info w-full md:w-1/2 flex flex-col justify-center items-start p-6">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">Secure Payment</h2>
+    <p class="text-base md:text-lg mb-6">Enter your payment details to complete the purchase. Your information is securely encrypted for your protection.</p>
+    <img src="assets/payment.png" alt="Payment Icons" class="w-90 h-40 mb-4 " />
+    <!-- Additional security information, logos -->
+    <p class="text-xs md:text-sm text-gray-500">Your payment is secured by <strong>SSL Encryption</strong>.</p>
+  </div>
+
+  <!-- Right-hand side payment form -->
+  <div class="payment-form-container w-full md:w-1/2 flex items-center justify-center">
+    <form (submit)="onSubmit($event)" class="w-full max-w-md bg-white p-6 md:p-8 rounded-lg shadow-lg">
+      <h3 class="text-xl md:text-2xl font-semibold mb-4 md:mb-6 text-center">Enter Payment Details</h3>
+
+      <!-- Card Number -->
+      <div class="mb-3">
         <label for="cardNumber" class="block text-sm font-medium mb-2">Card Number</label>
         <input type="text" id="cardNumber" required placeholder="1234 5678 9012 3456" class="block w-full p-3 border border-gray-300 rounded-lg" />
       </div>
-  
-      <div class="mb-4">
+
+      <!-- Cardholder Name -->
+      <div class="mb-3">
         <label for="cardName" class="block text-sm font-medium mb-2">Cardholder Name</label>
         <input type="text" id="cardName" required placeholder="John Doe" class="block w-full p-3 border border-gray-300 rounded-lg" />
       </div>
-  
-      <div class="flex mb-4">
+
+      <!-- Expiry Date and CVV -->
+      <div class="flex mb-3">
         <div class="w-1/2 mr-2">
           <label for="expiryDate" class="block text-sm font-medium mb-2">Expiry Date</label>
           <input type="text" id="expiryDate" required placeholder="MM/YY" class="block w-full p-3 border border-gray-300 rounded-lg" />
@@ -22,13 +36,31 @@
           <input type="text" id="cvv" required placeholder="123" class="block w-full p-3 border border-gray-300 rounded-lg" />
         </div>
       </div>
-  
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">Pay Now</button>
+
+      <!-- Billing Address -->
+      <div class="mb-3">
+        <label for="billingAddress" class="block text-sm font-medium mb-2">Billing Address</label>
+        <input type="text" id="billingAddress" required placeholder="123 Main St, City, Country" class="block w-full p-3 border border-gray-300 rounded-lg" />
+      </div>
+
+      <!-- Zip Code -->
+      <div class="mb-4">
+        <label for="zipCode" class="block text-sm font-medium mb-2">Zip/Postal Code</label>
+        <input type="text" id="zipCode" required placeholder="123456" class="block w-full p-3 border border-gray-300 rounded-lg" />
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300 w-full">
+        Pay Now
+      </button>
     </form>
-  
-    <div *ngIf="paymentSuccess" class="mt-6 p-4 bg-green-100 text-green-800 rounded-lg shadow-lg">
-      <p>Your payment has been successful!</p>
-      <p>Redirecting you to the main page in {{ countdown }} seconds...</p>
+  </div>
+
+  <!-- Payment Success Message -->
+  <div *ngIf="paymentSuccess" class="fixed inset-0 bg-white bg-opacity-80 flex items-center justify-center">
+    <div class="bg-green-100 text-green-800 p-8 rounded-lg shadow-lg text-center">
+      <p class="text-lg font-semibold">Your payment has been successful!</p>
+      <p class="mt-2">Redirecting you to the main page in {{ countdown }} seconds...</p>
     </div>
   </div>
-  
+</div>
