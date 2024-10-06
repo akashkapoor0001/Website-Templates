@@ -22,63 +22,81 @@
   >
     <!-- 1st Container -->
     <div
-    class="template-box bg-white dark:bg-gray-800 p-6 shadow-lg rounded-lg transition-transform duration-300 ease-in-out hover:scale-105"
-  >
-    <img
-      src="assets/E-Commerce1.png"
-      alt="Template 1"
-      class="w-full h-50 object-cover rounded-lg mb-3"
-    />
-    <h2 class="text-2xl font-bold mb-2">Minimalist Interior Style</h2>
-    <p class="text-sm mb-4">Perfect for Interior Styling of the House.</p>
-    <a href="https://website-ecommerce1.vercel.app/" target="_blank">
-      <button class="btn-view bg-indigo-500 text-white px-3 py-2 rounded-lg hover:bg-indigo-700 transition-colors duration-300">
+      class="template-box bg-white dark:bg-gray-800 p-6 shadow-lg rounded-lg transition-transform duration-300 ease-in-out hover:scale-105"
+    >
+      <img
+        src="assets/E-Commerce1.png"
+        alt="Template 1"
+        class="w-full h-50 object-cover rounded-lg mb-3"
+      />
+      <h2 class="text-2xl font-bold mb-2">Minimalist Interior Style</h2>
+      <p class="text-sm mb-4">Perfect for Interior Styling of the House.</p>
+      <a href="https://website-ecommerce1.vercel.app/" target="_blank">
+        <button
+          class="btn-view bg-indigo-500 text-white px-3 py-2 rounded-lg hover:bg-indigo-700 transition-colors duration-300"
+        >
+          View Template
+        </button>
+      </a>
+      <button
+        class="shop-now-button mx-3"
+        (click)="navigateToComponent('payment-gateway')"
+      >
+        Shop Now
+      </button>
+    </div>
+
+    <!-- 2nd Container -->
+    <div
+      class="template-box bg-white dark:bg-gray-800 p-6 shadow-lg rounded-lg transition-transform duration-300 ease-in-out hover:scale-105"
+    >
+      <img
+        src="assets/E-Commerce2.png"
+        alt="Template 1"
+        class="w-full h-50 object-cover rounded-lg mb-3"
+      />
+      <h2 class="text-2xl font-bold mb-2">Trendy Style Hub</h2>
+      <p class="text-sm mb-4">
+        Discover the latest trends in home decor, fashion, and lifestyle.
+      </p>
+      <a href="https://nareshrajput-sports-site.vercel.app/" target="_blank">
+        <button
+          class="btn-view bg-indigo-500 text-white px-3 py-2 rounded-lg hover:bg-indigo-700 transition-colors duration-300"
+        >
+          View Template
+        </button>
+      </a>
+      <button
+        class="shop-now-button mx-3"
+        (click)="navigateToComponent('payment-gateway')"
+      >
+        Shop Now
+      </button>
+    </div>
+
+    <!-- 3rd Container -->
+    <div
+      class="template-box bg-white dark:bg-gray-800 p-6 shadow-lg rounded-lg transition-transform duration-300 ease-in-out hover:scale-105"
+    >
+      <img
+        src="assets/template1.png"
+        alt="Template 1"
+        class="w-full h-40 object-cover rounded-lg mb-4"
+      />
+      <h2 class="text-2xl font-bold mb-2">Modern Storefront</h2>
+      <p class="text-sm mb-4">Perfect for modern online shops.</p>
+      <button
+        class="btn-view bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors duration-300"
+      >
         View Template
       </button>
-    </a>    
-    <button class="shop-now-button mx-3" (click)="navigateToComponent('payment-gateway')">
-      Shop Now
-    </button>
-  </div>
-  
-  <!-- 2nd Container -->
-  <div
-  class="template-box bg-white dark:bg-gray-800 p-6 shadow-lg rounded-lg transition-transform duration-300 ease-in-out hover:scale-105"
->
-  <img
-    src="assets/E-Commerce2.png"
-    alt="Template 1"
-    class="w-full h-50 object-cover rounded-lg mb-3"
-  />
-  <h2 class="text-2xl font-bold mb-2">Trendy Style Hub</h2>
-  <p class="text-sm mb-4">Discover the latest trends in home decor, fashion, and lifestyle.</p>
-  <a href="https://nareshrajput-sports-site.vercel.app/" target="_blank">
-    <button class="btn-view bg-indigo-500 text-white px-3 py-2 rounded-lg hover:bg-indigo-700 transition-colors duration-300">
-      View Template
-    </button>
-  </a>    
-  <button class="shop-now-button mx-3">
-    Shop Now
-  </button>
-</div>
-
-<!-- 3rd Container -->
-  <div
-  class="template-box bg-white dark:bg-gray-800 p-6 shadow-lg rounded-lg transition-transform duration-300 ease-in-out hover:scale-105"
->
-  <img
-    src="assets/template1.png"
-    alt="Template 1"
-    class="w-full h-40 object-cover rounded-lg mb-4"
-  />
-  <h2 class="text-2xl font-bold mb-2">Modern Storefront</h2>
-  <p class="text-sm mb-4">Perfect for modern online shops.</p>
-  <button
-    class="btn-view bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors duration-300"
-  >
-    View Template
-  </button>
-</div>
+      <button
+        class="shop-now-button mx-3"
+        (click)="navigateToComponent('payment-gateway')"
+      >
+        Shop Now
+      </button>
+    </div>
 
     <!-- Repeat similar blocks for other templates -->
   </div>
