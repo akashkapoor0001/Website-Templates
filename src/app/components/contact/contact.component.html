@@ -1,13 +1,13 @@
-<!-- contact.component.html -->
 <div id="contact" class="flex flex-col md:flex-row md:flex-row-reverse items-start justify-center min-h-screen bg-black text-white p-10">
     <!-- Right: Contact Information (displayed first on mobile) -->
     <div class="md:w-1/2 p-6 md:pl-20 pt-64">
         <h1 class="text-6xl font-bold mb-6 text-center md:text-left">CONTACT</h1>
         <p class="mb-4 text-center md:text-left">
-            I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story and let your users know a little more about you.
+            We value your feedback and inquiries. Please feel free to reach out to us for any questions, suggestions, or support.
         </p>
-        <p class="mb-2 text-center md:text-left">info&#64;my-domain.com</p>
-        <p class="mb-2 text-center md:text-left">Tel: 1-800-000-0000</p>
+        <p class="mb-2 text-center md:text-left">Email: akashkapoor976&#64;gmail.com</p>
+        <p class="mb-2 text-center md:text-left">Phone: +91 98765 XXXXX</p>
+        <p class="mb-2 text-center md:text-left">Address: 123 Business Rd, Suite 456, City, State, ZIP Code</p>
     </div>
 
     <!-- Left: Contact Form (displayed second on mobile) -->
@@ -15,26 +15,26 @@
         <div class="flex space-x-4">
             <div class="flex-1">
                 <label for="firstName" class="block mb-2">First Name *</label>
-                <input id="firstName" type="text" class="w-full p-2 bg-black border border-white text-white focus:border-indigo-400 focus:outline-indigo-400" />
+                <input id="firstName" type="text" [(ngModel)]="firstName" class="w-full p-2 bg-black border border-white text-white focus:border-indigo-400 focus:outline-indigo-400" />
             </div>
             <div class="flex-1">
                 <label for="lastName" class="block mb-2">Last Name *</label>
-                <input id="lastName" type="text" class="w-full p-2 bg-black border border-white text-white focus:border-indigo-400 focus:outline-indigo-400" />
+                <input id="lastName" type="text" [(ngModel)]="lastName" class="w-full p-2 bg-black border border-white text-white focus:border-indigo-400 focus:outline-indigo-400" />
             </div>
         </div>
         <div>
             <label for="email" class="block mb-2">Email *</label>
-            <input id="email" type="email" class="w-full p-2 bg-black border border-white text-white focus:border-indigo-400 focus:outline-indigo-400" />
+            <input id="email" type="email" [(ngModel)]="email" class="w-full p-2 bg-black border border-white text-white focus:border-indigo-400 focus:outline-indigo-400" />
         </div>
         <div>
             <label for="subject" class="block mb-2">Subject</label>
-            <input id="subject" type="text" class="w-full p-2 bg-black border border-white text-white focus:border-indigo-400 focus:outline-indigo-400" />
+            <input id="subject" type="text" [(ngModel)]="subject" class="w-full p-2 bg-black border border-white text-white focus:border-indigo-400 focus:outline-indigo-400" /> <!-- Add two-way binding for subject -->
         </div>
         <div>
             <label for="message" class="block mb-2">Message</label>
-            <textarea id="message" rows="4" class="w-full p-2 bg-black border border-white text-white focus:border-indigo-400 focus:outline-indigo-400"></textarea>
+            <textarea id="message" rows="4" [(ngModel)]="message" class="w-full p-2 bg-black border border-white text-white focus:border-indigo-400 focus:outline-indigo-400"></textarea>
         </div>
-        <button class="px-6 py-2 border border-white text-indigo-400 font-bold transition-colors duration-200 hover:bg-indigo-400 hover:text-white hover:border-white">
+        <button (click)="sendEmail()" class="px-6 py-2 border border-white text-indigo-400 font-bold transition-colors duration-200 hover:bg-indigo-400 hover:text-white hover:border-white">
             Send
         </button>
     </div>
