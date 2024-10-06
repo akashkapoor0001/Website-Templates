@@ -1,13 +1,42 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, Renderer2, OnInit } from '@angular/core';
 import { gsap } from 'gsap';
+import { Router, NavigationEnd } from '@angular/router'; // Import Router and NavigationEnd
+import { filter } from 'rxjs/operators'; // Import filter
 
 @Component({
   selector: 'app-education',
   templateUrl: './education.component.html',
   styleUrls: ['./education.component.scss']
 })
-export class EducationComponent implements AfterViewInit {
+export class EducationComponent implements AfterViewInit, OnInit {
+  navigateToComponent(arg0: string) {
+    // Show any loading message or animation if needed
+    console.log('Navigating to payment gateway in 3 seconds...');
+    
+    // Set a timeout to delay the navigation
+    setTimeout(() => {
+      this.router.navigate(['/payment-gateway']);
+    }, 3000); // Delay of 3000 milliseconds (3 seconds)
+  }
   darkMode = false;
+
+  constructor(private renderer: Renderer2, private router: Router) {}
+
+  ngOnInit(): void {
+    // Check if user already has a preferred theme from localStorage
+    const theme = localStorage.getItem('theme');
+    if (theme === 'dark') {
+      this.darkMode = true;
+      this.renderer.addClass(document.body, 'dark'); // Apply dark theme to the body
+    }
+
+    // Scroll to top when the component is loaded
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        window.scrollTo(0, 0); // Scroll to the top of the page on navigation
+      });
+  }
 
   ngAfterViewInit(): void {
     // GSAP animations for page heading and templates
@@ -28,12 +57,15 @@ export class EducationComponent implements AfterViewInit {
   }
 
   toggleTheme(): void {
+    // Toggle dark mode and update styles for the full component
     this.darkMode = !this.darkMode;
-    const rootElement = document.documentElement;
+
     if (this.darkMode) {
-      rootElement.classList.add('dark');
+      this.renderer.addClass(document.body, 'dark'); // Toggle dark theme for body
+      localStorage.setItem('theme', 'dark');  // Save theme preference
     } else {
-      rootElement.classList.remove('dark');
+      this.renderer.removeClass(document.body, 'dark'); // Remove dark theme for body
+      localStorage.setItem('theme', 'light');  // Save theme preference
     }
   }
 }
