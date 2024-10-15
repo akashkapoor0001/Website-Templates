@@ -187,14 +187,21 @@ export class PaymentGatewayComponent implements OnInit {
   async sendOTP(): Promise<void> {
     try {
       const response = await axios.post('/api/sendOtp', { mobileNumber: this.mobileNumber });
-      this.verificationSid = response.data.sid; // Store verification SID
-      console.log(`OTP sent to ${this.mobileNumber}: Verification SID: ${this.verificationSid}`);
-      this.showOTPInput = true; // Show OTP input form
+      
+      if (response.data.sid) {
+        this.verificationSid = response.data.sid; // Store verification SID
+        console.log(`OTP sent to ${this.mobileNumber}: Verification SID: ${this.verificationSid}`);
+        this.showOTPInput = true; // Show OTP input form
+      } else {
+        console.error('Verification SID is undefined');
+        alert('Failed to send OTP. Please try again.');
+      }
     } catch (error) {
       console.error('Error sending OTP', error);
-      // Handle error, like showing an error message to the user
+      alert('Error sending OTP. Please try again.');
     }
   }
+  
 
   async verifyOTP(): Promise<void> {
     try {
