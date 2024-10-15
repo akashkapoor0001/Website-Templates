@@ -1,0 +1,7 @@
+{
+    "rewrites": [
+      { "source": "/api/sendOtp", "destination": "/api/sendOtp.js" },
+      { "source": "/api/verifyOtp", "destination": "/api/verifyOtp.js" }
+    ]
+  }
+  
