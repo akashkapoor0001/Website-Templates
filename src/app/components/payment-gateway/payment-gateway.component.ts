@@ -146,103 +146,7 @@
 
 
 
-// import { Component, OnInit } from '@angular/core';
-// import { Router } from '@angular/router';
-// import { gsap } from 'gsap';
-// import { CommonModule } from '@angular/common';
-// import { FormsModule } from '@angular/forms';
-// import axios from 'axios';
-
-// @Component({
-//   selector: 'app-payment-gateway',
-//   standalone: true,
-//   imports: [CommonModule, FormsModule],
-//   templateUrl: './payment-gateway.component.html',
-//   styleUrls: ['./payment-gateway.component.scss']
-// })
-// export class PaymentGatewayComponent implements OnInit {
-//   paymentSuccess: boolean = false;
-//   countdown: number = 3;
-//   countdownInterval: any;
-//   showOTPInput: boolean = false;
-//   mobileNumber: string = '';
-//   enteredOTP: string = '';
-//   showOTPError: boolean = false;
-
-//   constructor(private router: Router) {}
-
-//   ngOnInit(): void {
-//     gsap.fromTo('.payment-info', { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 1.5 });
-//     gsap.fromTo('.payment-form-container', { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 1.5 });
-//   }
-
-//   onSubmit(event: Event): void {
-//     event.preventDefault();
-//     this.sendOTP();
-//   }
-
-//   async sendOTP(): Promise<void> {
-//     try {
-//       const response = await axios.post('http://localhost:5000/api/sendOtp', { mobileNumber: this.mobileNumber });
-//       console.log(`OTP sent to ${this.mobileNumber}: Verification SID: ${response.data.sid}`);
-//       this.showOTPInput = true;
-//     } catch (error) {
-//       console.error('Error sending OTP', error);
-//       alert('Error sending OTP. Please try again.');
-//     }
-//   }
-
-//   async verifyOTP(): Promise<void> {
-//     try {
-//       const response = await axios.post('http://localhost:5000/api/verifyOtp', {
-//         mobileNumber: this.mobileNumber,
-//         code: this.enteredOTP
-//       });
-
-//       if (response.data.valid) {
-//         this.paymentSuccess = true;
-//         this.showOTPInput = false;
-//         this.startCountdown();
-//         setTimeout(() => {
-//           this.router.navigate(['/ecommerce']);
-//         }, 3000);
-//       } else {
-//         this.showOTPError = true;
-//         setTimeout(() => {
-//           this.showOTPError = false;
-//         }, 3000);
-//       }
-//     } catch (error) {
-//       console.error('Error verifying OTP', error);
-//       this.showOTPError = true;
-//       setTimeout(() => {
-//         this.showOTPError = false;
-//       }, 3000);
-//     }
-//   }
-
-//   resendOTP(): void {
-//     this.sendOTP();
-//   }
-
-//   startCountdown(): void {
-//     this.countdownInterval = setInterval(() => {
-//       this.countdown--;
-//       if (this.countdown <= 0) {
-//         clearInterval(this.countdownInterval);
-//       }
-//     }, 1000);
-//   }
-
-//   ngOnDestroy(): void {
-//     if (this.countdownInterval) {
-//       clearInterval(this.countdownInterval);
-//     }
-//   }
-// }
-
-
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { gsap } from 'gsap';
 import { CommonModule } from '@angular/common';
@@ -256,7 +160,7 @@ import axios from 'axios';
   templateUrl: './payment-gateway.component.html',
   styleUrls: ['./payment-gateway.component.scss']
 })
-export class PaymentGatewayComponent implements OnInit, OnDestroy {
+export class PaymentGatewayComponent implements OnInit {
   paymentSuccess: boolean = false;
   countdown: number = 3;
   countdownInterval: any;
@@ -273,72 +177,66 @@ export class PaymentGatewayComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(event: Event): void {
-    event.preventDefault(); // Prevent default form submission
-    this.sendOTP(); // Trigger OTP sending
+    event.preventDefault();
+    this.sendOTP();
   }
 
   async sendOTP(): Promise<void> {
     try {
-      const response = await axios.post('/api/sendOtp', { mobileNumber: this.mobileNumber });
-      
-      if (response.data.sid) {
-        console.log(`OTP sent to ${this.mobileNumber}: Verification SID: ${response.data.sid}`);
-        this.showOTPInput = true; // Show OTP input form
-      } else {
-        console.error('Verification SID is undefined');
-        alert('Failed to send OTP. Please try again.');
-      }
+      const response = await axios.post('http://localhost:5000/api/sendOtp', { mobileNumber: this.mobileNumber });
+      console.log(`OTP sent to ${this.mobileNumber}: Verification SID: ${response.data.sid}`);
+      this.showOTPInput = true;
     } catch (error) {
-      console.error('Error sending OTP:', error);
+      console.error('Error sending OTP', error);
       alert('Error sending OTP. Please try again.');
     }
   }
 
   async verifyOTP(): Promise<void> {
     try {
-      const response = await axios.post('/api/verifyOtp', {
+      const response = await axios.post('http://localhost:5000/api/verifyOtp', {
         mobileNumber: this.mobileNumber,
         code: this.enteredOTP
       });
 
       if (response.data.valid) {
-        this.paymentSuccess = true; // Show payment success
-        this.showOTPInput = false; // Hide OTP input
-        this.startCountdown(); // Start countdown for redirect
+        this.paymentSuccess = true;
+        this.showOTPInput = false;
+        this.startCountdown();
         setTimeout(() => {
-          this.router.navigate(['/ecommerce']); // Redirect after 3 seconds
+          this.router.navigate(['/ecommerce']);
         }, 3000);
       } else {
-        this.showOTPError = true; // Show error message for incorrect OTP
+        this.showOTPError = true;
         setTimeout(() => {
-          this.showOTPError = false; // Hide error after 3 seconds
+          this.showOTPError = false;
         }, 3000);
       }
     } catch (error) {
-      console.error('Error verifying OTP:', error);
-      this.showOTPError = true; // Show error message
+      console.error('Error verifying OTP', error);
+      this.showOTPError = true;
       setTimeout(() => {
-        this.showOTPError = false; // Hide error after 3 seconds
+        this.showOTPError = false;
       }, 3000);
     }
   }
 
   resendOTP(): void {
-    this.sendOTP(); // Resend the OTP
+    this.sendOTP();
   }
 
   startCountdown(): void {
     this.countdownInterval = setInterval(() => {
       this.countdown--;
       if (this.countdown <= 0) {
-        clearInterval(this.countdownInterval); // Stop countdown when it reaches 0
+        clearInterval(this.countdownInterval);
       }
-    }, 1000); // Decrease countdown every second
+    }, 1000);
   }
 
   ngOnDestroy(): void {
     if (this.countdownInterval) {
-      clearInterval(this.countdownInterval); // Clear interval on component destruction
+      clearInterval(this.countdownInterval);
     }
   }
 }
