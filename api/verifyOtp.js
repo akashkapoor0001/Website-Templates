@@ -13,8 +13,13 @@ export default async function handler(req, res) {
       .verificationChecks
       .create({ to: mobileNumber, code: code });
 
-    res.status(200).json({ valid: verificationCheck.status === 'approved' });
+    if (verificationCheck && verificationCheck.status === 'approved') {
+      res.status(200).json({ valid: true });
+    } else {
+      res.status(400).json({ valid: false });
+    }
   } catch (error) {
+    console.error('Twilio verification error:', error.message);
     res.status(500).json({ error: 'Failed to verify OTP', details: error.message });
   }
 }
