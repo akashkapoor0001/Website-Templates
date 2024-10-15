@@ -202,6 +202,7 @@ export class PaymentGatewayComponent implements OnInit {
     }
   }
   
+  
   async verifyOTP(): Promise<void> {
     try {
       const response = await axios.post('/api/verifyOtp', {
