@@ -194,28 +194,61 @@
 
         async function sendOtp() {
             const mobileNumber = document.getElementById('mobileNumber').value;
-            if (!mobileNumber) {
-                alert('Please enter your mobile number.');
-                return;
-            }
+            const response = await fetch('/api/sendOtp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ mobileNumber })
+            });
+            const data = await response.json();
+            alert(data.message);
 
-            // Simulate OTP being sent
-            alert('OTP has been sent to ' + mobileNumber);
-
-            // Flip the container to show the OTP input
             flipContainer();
         }
 
         async function verifyOtp() {
+            const mobileNumber = document.getElementById('mobileNumber').value;
             const otpInputs = document.querySelectorAll('.otp-input');
             const otp = Array.from(otpInputs).map(input => input.value).join('');
+
             if (otp.length < 6) {
                 alert('Please enter the complete OTP.');
                 return;
             }
 
-            // Simulate OTP verification
-            alert('OTP verified successfully: ' + otp);
+            const response = await fetch('/api/verifyOtp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ mobileNumber, code: otp })
+            });
+
+            const data = await response.json();
+
+            if (data.valid) {
+                alert(data.message); // OTP verified successfully
+                startCountdown();
+            } else {
+                alert(data.message); // Invalid OTP
+            }
+        }
+
+        function startCountdown() {
+            let countdown = 3; // Starting countdown number
+            const countdownDisplay = document.createElement('div');
+            countdownDisplay.style.fontSize = '24px';
+            countdownDisplay.style.marginTop = '20px';
+            countdownDisplay.style.textAlign = 'center';
+            document.body.appendChild(countdownDisplay);
+
+            const interval = setInterval(() => {
+                countdownDisplay.innerText = countdown;
+                countdown--;
+
+                if (countdown < 0) {
+                    clearInterval(interval);
+                    countdownDisplay.innerText = 'Your payment is successful!';
+                    // Optionally, redirect or trigger payment confirmation
+                }
+            }, 1000);
         }
 
         function moveToNext(currentInput, nextIndex) {
