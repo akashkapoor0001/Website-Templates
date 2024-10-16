@@ -146,12 +146,10 @@
 
 
 
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { gsap } from 'gsap';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import axios from 'axios';
 
 @Component({
   selector: 'app-payment-gateway',
@@ -160,76 +158,46 @@ import axios from 'axios';
   templateUrl: './payment-gateway.component.html',
   styleUrls: ['./payment-gateway.component.scss']
 })
-export class PaymentGatewayComponent implements OnInit {
+export class PaymentGatewayComponent implements OnInit, OnDestroy {
   paymentSuccess: boolean = false;
   countdown: number = 3;
   countdownInterval: any;
   showOTPInput: boolean = false;
-  mobileNumber: string = '';
   enteredOTP: string = '';
   showOTPError: boolean = false;
 
-  constructor(private router: Router) {}
+  // Set the URL you want to redirect to after payment is successful
+  redirectUrl: string = 'https://websites-template-otp-auth.vercel.app/'; 
+
+  constructor() {}
 
   ngOnInit(): void {
     gsap.fromTo('.payment-info', { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 1.5 });
     gsap.fromTo('.payment-form-container', { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 1.5 });
   }
 
+  // Handle form submission and redirect to the specified URL
   onSubmit(event: Event): void {
     event.preventDefault();
-    this.sendOTP();
+    
+    // Simulate processing payment here
+    console.log('Payment details submitted');
+
+    // Redirect after form submission
+    this.redirectToUrl();
   }
 
-  async sendOTP(): Promise<void> {
-    try {
-      const response = await axios.post('http://localhost:5000/api/sendOtp', { mobileNumber: this.mobileNumber });
-      console.log(`OTP sent to ${this.mobileNumber}: Verification SID: ${response.data.sid}`);
-      this.showOTPInput = true;
-    } catch (error) {
-      console.error('Error sending OTP', error);
-      alert('Error sending OTP. Please try again.');
-    }
+  redirectToUrl(): void {
+    window.location.href = this.redirectUrl; // Redirect to the given URL
   }
 
-  async verifyOTP(): Promise<void> {
-    try {
-      const response = await axios.post('http://localhost:5000/api/verifyOtp', {
-        mobileNumber: this.mobileNumber,
-        code: this.enteredOTP
-      });
-
-      if (response.data.valid) {
-        this.paymentSuccess = true;
-        this.showOTPInput = false;
-        this.startCountdown();
-        setTimeout(() => {
-          this.router.navigate(['/ecommerce']);
-        }, 3000);
-      } else {
-        this.showOTPError = true;
-        setTimeout(() => {
-          this.showOTPError = false;
-        }, 3000);
-      }
-    } catch (error) {
-      console.error('Error verifying OTP', error);
-      this.showOTPError = true;
-      setTimeout(() => {
-        this.showOTPError = false;
-      }, 3000);
-    }
-  }
-
-  resendOTP(): void {
-    this.sendOTP();
-  }
-
+  // Start the countdown timer for displaying success message (optional)
   startCountdown(): void {
     this.countdownInterval = setInterval(() => {
       this.countdown--;
       if (this.countdown <= 0) {
         clearInterval(this.countdownInterval);
+        // Optionally, redirect to another page or show success message after countdown
       }
     }, 1000);
   }

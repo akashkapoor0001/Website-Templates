@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    
+    <!-- GSAP Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <!-- Modern CSS Styles -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: rgb(255, 255, 255);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            background-color: white;
+            border-radius: 7px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            width: 800px;
+            height: 500px; /* Increased height */
+            overflow: hidden;
+            opacity: 0;
+        }
+
+        .left-section {
+            flex: 1;
+            background-color: #f0f4f8;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0; /* Remove padding to utilize full space */
+        }
+        
+        .left-section img {
+            width: 100%; /* Set width to 100% */
+            height: 100%; /* Set height to 100% */
+            object-fit: cover; /* Cover the entire area */
+        }
+
+        .right-section {
+            flex: 1;
+            padding: 40px; /* Adjust padding */
+            position: relative;
+            perspective: 1000px;
+            margin-right: 70px;
+        }
+
+        .form-wrapper {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transform: rotateY(0);
+            transition: transform 0.8s ease-in-out;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
+
+        .right-section.flipped .form-wrapper {
+            transform: rotateY(180deg);
+        }
+
+        .front, .back {
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
+            justify-content: center; /* Center content vertically */
+        }
+
+        .back {
+            transform: rotateY(180deg);
+        }
+
+        h1 {
+            font-size: 28px; /* Adjusted font size */
+            margin-bottom: 30px; /* Increased margin */
+            color: #1220ba;
+            text-align: center; /* Center the heading */
+        }
+
+        input[type="text"] {
+            width: 80%; /* Set width to 80% */
+            max-width: 400px; /* Max width to avoid overflow */
+            padding: 15px; /* Increased padding */
+            margin: 15px 0; /* Increased margin */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 18px; /* Increased font size */
+            text-align: center; /* Center text in the input */
+        }
+
+        /* Styles for OTP input boxes */
+        .otp-input-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* Space between boxes */
+            margin-top: 20px; /* Margin above the OTP input */
+        }
+
+        .otp-input {
+            width: 50px; /* Fixed width for each box */
+            height: 50px; /* Fixed height for each box */
+            font-size: 24px; /* Font size for the digits */
+            text-align: center; /* Center text in the box */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none; /* Remove outline */
+        }
+
+        button {
+            background-color: #313fdb;
+            color: white;
+            border: none;
+            padding: 10px 15px; /* Smaller padding for the button */
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px; /* Font size adjustment */
+            width: 60%; /* Adjust width of the button */
+            margin-top: 20px; /* Increased margin */
+            transition: background-color 0.3s;
+            text-align: center; /* Center text in the button */
+        }
+
+        button:hover {
+            background-color: #0c1895;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Left-side Image -->
+        <div class="left-section">
+            <img src="./otp.jpg" alt="OTP Illustration"> <!-- Replace this with your image -->
+        </div>
+
+        <!-- Right-side Form -->
+        <div class="right-section" id="rightSection">
+            <div class="form-wrapper">
+                <!-- Step 1: Front Side - Mobile Number Input -->
+                <div class="front">
+                    <h1>OTP AUTHENTICATION</h1>
+                    <input type="text" id="mobileNumber" placeholder="Enter Mobile Number" />
+                    <button onclick="sendOtp()">Send OTP</button>
+                </div>
+
+                <!-- Step 2: Back Side - OTP Verification Input -->
+                <div class="back">
+                    <h1>OTP VERIFICATION</h1>
+                    <div class="otp-input-container">
+                        <input type="text" maxlength="1" class="otp-input" oninput="moveToNext(this, 1)" />
+                        <input type="text" maxlength="1" class="otp-input" oninput="moveToNext(this, 2)" />
+                        <input type="text" maxlength="1" class="otp-input" oninput="moveToNext(this, 3)" />
+                        <input type="text" maxlength="1" class="otp-input" oninput="moveToNext(this, 4)" />
+                        <input type="text" maxlength="1" class="otp-input" oninput="moveToNext(this, 5)" />
+                        <input type="text" maxlength="1" class="otp-input" oninput="moveToNext(this, 6)" />
+                    </div>
+                    <button onclick="verifyOtp()">Verify OTP</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Code -->
+    <script>
+        // Flip the container after OTP is sent
+        function flipContainer() {
+            const rightSection = document.getElementById('rightSection');
+            rightSection.classList.add('flipped');
+        }
+
+        async function sendOtp() {
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            if (!mobileNumber) {
+                alert('Please enter your mobile number.');
+                return;
+            }
+
+            // Simulate OTP being sent
+            alert('OTP has been sent to ' + mobileNumber);
+
+            // Flip the container to show the OTP input
+            flipContainer();
+        }
+
+        async function verifyOtp() {
+            const otpInputs = document.querySelectorAll('.otp-input');
+            const otp = Array.from(otpInputs).map(input => input.value).join('');
+            if (otp.length < 6) {
+                alert('Please enter the complete OTP.');
+                return;
+            }
+
+            // Simulate OTP verification
+            alert('OTP verified successfully: ' + otp);
+        }
+
+        function moveToNext(currentInput, nextIndex) {
+            if (currentInput.value.length === 1 && nextIndex < 6) {
+                document.getElementsByClassName('otp-input')[nextIndex].focus();
+            }
+        }
+
+        // GSAP Animation on page load
+        document.addEventListener("DOMContentLoaded", () => {
+            gsap.to('.container', { opacity: 1, duration: 1.5, ease: 'power2.inOut' });
+        });
+    </script>
+</body>
+</html>
