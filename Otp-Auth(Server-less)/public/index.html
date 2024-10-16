@@ -233,23 +233,47 @@
 
         function startCountdown() {
             let countdown = 3; // Starting countdown number
+        
+            // Create a structured container for the countdown
+            const countdownContainer = document.createElement('div');
+            countdownContainer.style.display = 'flex';
+            countdownContainer.style.flexDirection = 'column';
+            countdownContainer.style.alignItems = 'center';
+            countdownContainer.style.justifyContent = 'center';
+            countdownContainer.style.border = '2px solid #28a745'; // Green border
+            countdownContainer.style.backgroundColor = '#e6ffe6'; // Light green background
+            countdownContainer.style.color = '#28a745'; // Darker green text
+            countdownContainer.style.fontSize = '24px'; // Font size for text
+            countdownContainer.style.padding = '20px'; // Padding around the text
+            countdownContainer.style.borderRadius = '10px'; // Rounded corners
+            countdownContainer.style.marginTop = '30px'; // Margin from the top
+        
+            // Add the container to the body
+            document.body.appendChild(countdownContainer);
+        
+            // Create an element for the countdown text
             const countdownDisplay = document.createElement('div');
-            countdownDisplay.style.fontSize = '24px';
-            countdownDisplay.style.marginTop = '20px';
-            countdownDisplay.style.textAlign = 'center';
-            document.body.appendChild(countdownDisplay);
-
+            countdownDisplay.innerText = countdown; // Set initial countdown text
+            countdownContainer.appendChild(countdownDisplay); // Add it to the container
+        
+            // Create a timer to update the countdown every second
             const interval = setInterval(() => {
-                countdownDisplay.innerText = countdown;
                 countdown--;
-
+                countdownDisplay.innerText = countdown; // Update countdown display
+        
                 if (countdown < 0) {
-                    clearInterval(interval);
-                    countdownDisplay.innerText = 'Your payment is successful!';
-                    // Optionally, redirect or trigger payment confirmation
+                    clearInterval(interval); // Stop the interval when countdown finishes
+        
+                    countdownDisplay.innerText = 'Your payment is successful!'; // Display success message
+                    
+                    // Redirect the user to the main page after 1 second
+                    setTimeout(() => {
+                        window.location.href = 'https://websites-template.vercel.app/'; // Replace with the correct path of your main page
+                    }, 1000); // 1-second delay before redirect
                 }
-            }, 1000);
+            }, 1000); // 1-second interval for countdown
         }
+        
 
         function moveToNext(currentInput, nextIndex) {
             if (currentInput.value.length === 1 && nextIndex < 6) {
