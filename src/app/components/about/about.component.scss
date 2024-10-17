@@ -23,3 +23,12 @@
       overflow: hidden;
     }
   
+    @media (max-width: 768px) {
+      .relative img {
+          height: auto;
+          max-height: 100vh;
+          width: auto;
+          max-width: 100vw;
+      }
+  }
+  
