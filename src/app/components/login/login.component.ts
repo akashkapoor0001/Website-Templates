@@ -132,6 +132,7 @@ import { Router } from '@angular/router';
 import { firebaseConfig } from '../../../firebase-config';
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import Swal from 'sweetalert2';  // Import SweetAlert
 import * as emailjs from 'emailjs-com';  // Import EmailJS
 
 @Component({
@@ -172,20 +173,42 @@ rememberMe: any;
     signInWithEmailAndPassword(this.auth, this.email, this.password)
       .then((userCredential) => {
         console.log('Login successful:', userCredential.user);
-        this.showAlertWithMessage('Login successful!');
+        
+        // Show SweetAlert on successful login
+        Swal.fire({
+          title: 'Login Successful!',
+          text: 'You have been logged in successfully.',
+          icon: 'success',
+          timer: 2000, // Show for 2 seconds
+          showConfirmButton: false // Hide OK button
+        });
+  
+        // Save user information in localStorage
         localStorage.setItem('user', JSON.stringify({ email: this.email, firstName: this.email.charAt(0) }));
+  
+        // Call the email function if email exists
         if (userCredential.user.email) {
-          this.sendEmail(userCredential.user.email, 'Login');  // Call the email function
+          this.sendEmail(userCredential.user.email, 'Login');  
         }
+  
+        // Navigate to the home page after 2 seconds
         setTimeout(() => {
           this.router.navigate(['/']);
         }, 2000);
       })
       .catch((error) => {
         console.error('Error during login:', error.message);
-        this.showAlertWithMessage('Error during login: ' + error.message);
+  
+        // Show SweetAlert for error
+        Swal.fire({
+          title: 'Login Failed!',
+          text: `Error: ${error.message}`,
+          icon: 'error',
+          confirmButtonText: 'Try Again'
+        });
       });
   }
+  
 
   // Sweet alert
   showAlertWithMessage(message: string) {
@@ -230,14 +253,34 @@ rememberMe: any;
     createUserWithEmailAndPassword(this.auth, this.email, this.password)
       .then((userCredential) => {
         console.log('Registration successful:', userCredential.user);
-        this.showAlertWithMessage('Registration successful!');
-        this.toggleForm();  // Toggle back to the login form after registration
+        
+        // Show SweetAlert on successful registration
+        Swal.fire({
+          title: 'Registration Successful!',
+          text: 'Your account has been created successfully.',
+          icon: 'success',
+          timer: 2000, // Show for 2 seconds
+          showConfirmButton: false // Hide OK button
+        });
+  
+        // Toggle back to the login form after showing success message
+        setTimeout(() => {
+          this.toggleForm();  
+        }, 2000);
       })
       .catch((error) => {
         console.error('Error during registration:', error.message);
-        this.showAlertWithMessage('Error during registration: ' + error.message);
+        
+        // Show SweetAlert for registration error
+        Swal.fire({
+          title: 'Registration Failed!',
+          text: `Error: ${error.message}`,
+          icon: 'error',
+          confirmButtonText: 'Try Again'
+        });
       });
   }
+  
 
   // Function to send success email using EmailJS
   sendEmail(email: string, loginMethod: string) {
