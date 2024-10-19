@@ -1,188 +1,361 @@
-// Contains the styles for the login container
+// // Contains the styles for the login container
+
+// .min-h-screen {
+//   background: linear-gradient(
+//     135deg,  /* The angle to create a diagonal effect */
+//     white 50%,  /* The first half (triangle shape) will be white */
+//     #636ff1 50%  /* The second half will be purple */
+//   );
+//   position: relative;
+// }
+
+// .container {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 100%;
+//   height: 100%;
+//   margin-bottom: 470px;
+//   z-index: 2;
+// }
+
+// .logo {
+//   position: absolute;
+//   width: 11%;
+//   height: 8%;
+//   align-items: center;
+//   margin-bottom: 90px;
+// }
+
+// .card {
+//   width: 100%;
+//   max-width: 400px;
+//   transition: transform 0.6s;
+//   transform-style: preserve-3d;
+//   position: relative;
+//   border-radius: 20px;
+//   border: none;
+//   z-index: 3;
+// }
+
+// .card.flipped {
+//   transform: rotateY(180deg);
+// }
+
+// .front,
+// .back {
+//   position: absolute;
+//   width: 100%;
+//   backface-visibility: hidden;
+//   padding: 20px;
+// }
+
+// .back {
+//   transform: rotateY(180deg);
+// }
+
+// // Register Button CSS
+
+// .register-button {
+//   cursor: pointer;
+//   color: #636ff1;
+//   font-weight: bold;
+//   text-decoration: none;
+//   border: 1px solid #636ff1;
+//   border-radius: 12px;
+//   padding: 0.32rem 0.75rem;
+//   font-size: 0.875rem;
+//   transition: all 0.3s ease;
+// }
+
+// .register-button:hover {
+//   background-color: #636ff1;
+//   color: white;
+//   box-shadow: 0 4px 10px rgba(99, 102, 241, 0.4);
+//   text-decoration: none;
+// }
+
+// // Google Button CSS
+
+// .google-button {
+//   @apply border border-red-500 text-red-500 font-bold py-2 rounded mt-2 flex items-center justify-center w-full;
+//   transition: background-color 0.3s ease, color 0.3s ease;
+//   margin-top: 1rem;
+//   margin-bottom: 1rem;
+
+//   &:hover {
+//     @apply bg-red-500 text-white;
+//   }
+
+//   img {
+//     margin-right: 0.5rem;
+//   }
+
+//   // Responsive design
+//   @media (max-width: 640px) {
+//     @apply text-sm;
+//     padding: 0.5rem;
+//   }
+
+//   @media (min-width: 641px) and (max-width: 1024px) {
+//     @apply text-base;
+//   }
+// }
+
+
+// // Alert CSS
+
+// .alert {
+//     position: fixed;
+//     top: 20px;
+//     right: 20px;
+//     padding: 10px 20px;
+//     background-color: #38993c; // Green for success
+//     color: white;
+//     border-radius: 5px;
+//     transition: opacity 0.5s ease;
+//     opacity: 1;
+//   }
+  
+//   .alert-error {
+//     background-color: #da3d31; // Red for error
+//   }
+  
+
+//   // On Back Button CSS
+
+// .back-button {
+//     display: flex;
+//     align-items: center;
+//     cursor: pointer;
+//     position: fixed; // Fixed position to avoid shifting
+//     top: 20px; // Position at the top
+//     left: 20px; // Adjust left for desktop view
+//     z-index: 10; // Ensure it stays above other elements
+//     margin-right: 10px; // Add margin to the right
+//     padding: 4px; // Add padding to the button
+//     border: 2px solid #5a67d8; // Outer line color
+//     border-radius: 50%; // Rounded border
+//     background-color: transparent; // Transparent background
+//     transition: background-color 0.3s ease; // Animation effect
+
+//     .arrow-icon {
+//       fill: #5a67d8; // Initial color
+//       transition: fill 0.3s ease; // Animation effect
+//       width: 32px; // Increased size
+//       height: 32px; // Increased size
+  
+//       &:hover {
+//         fill: indigo; // Lighter shade of indigo on hover
+//       }
+//     }
+  
+//     .tooltip {
+//       visibility: hidden; // Initially hidden
+//       width: 80px; // Width of the tooltip
+//       background-color: rgba(0, 0, 0, 0.7); // Tooltip background color
+//       color: #fff; // Tooltip text color
+//       text-align: center; // Center text
+//       border-radius: 5px; // Rounded corners
+//       padding: 5px; // Padding
+//       position: absolute; // Absolute positioning
+//       bottom: 80%; // Position above the button
+//       left: 50%; // Center the tooltip
+//       transform: translate(-50%, -10%); // Adjust position to center and slightly raise
+//       opacity: 0; // Initial opacity
+//       transition: opacity 0.3s ease; // Fade-in effect
+//       z-index: 1; // Ensure it appears above other elements
+//     }
+  
+//     &:hover .tooltip {
+//       visibility: visible; // Show tooltip on hover
+//       opacity: 1; // Fade in tooltip
+//     }
+//   }
+  
+//   // Mobile Styles Only
+//   @media (max-width: 768px) {
+//     .back-button {
+//       left: 12px; // Adjust for mobile to keep it within the viewport
+//       top: 100px; // Position closer to the top-left corner
+  
+//       .tooltip {
+//         bottom: 130%; // Adjust tooltip position for better visibility on mobile
+//       }
+//     }
+//   }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .min-h-screen {
-  background: linear-gradient(
-    135deg,  /* The angle to create a diagonal effect */
-    white 50%,  /* The first half (triangle shape) will be white */
-    #636ff1 50%  /* The second half will be purple */
-  );
-  position: relative;
-}
-
-.container {
+  background: black;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  margin-bottom: 470px;
-  z-index: 2;
-}
-
-.logo {
-  position: absolute;
-  width: 11%;
-  height: 8%;
-  align-items: center;
-  margin-bottom: 90px;
-}
-
-.card {
-  width: 100%;
-  max-width: 400px;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
   position: relative;
-  border-radius: 20px;
-  border: none;
-  z-index: 3;
 }
 
-.card.flipped {
-  transform: rotateY(180deg);
-}
-
-.front,
-.back {
-  position: absolute;
+.signup-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  backface-visibility: hidden;
+  max-width: 1200px;
+  background: #1a1a1a;
   padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
 
-.back {
-  transform: rotateY(180deg);
+.signup-left {
+  flex: 1;
+  padding: 30px;
 }
 
-// Register Button CSS
+.signup-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-.register-button {
-  cursor: pointer;
+.signup-right img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+h1 {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.input-field {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 1rem;
+  flex: 1;
+  margin-left: 10px;
+}
+
+.icon {
   color: #636ff1;
-  font-weight: bold;
-  text-decoration: none;
-  border: 1px solid #636ff1;
-  border-radius: 12px;
-  padding: 0.32rem 0.75rem;
-  font-size: 0.875rem;
-  transition: all 0.3s ease;
+  font-size: 1.5rem;
 }
 
-.register-button:hover {
+.input-underline {
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid white;
+}
+
+
+.placeholder-text {
+  color: white;
+  font-size: 1rem;
+}
+
+
+.register-btn {
+  width: 100%;
   background-color: #636ff1;
   color: white;
-  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.4);
+  font-size: 1rem;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+.register-btn:hover {
+  background-color: #4a55b4;
+}
+
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.google-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: 1px solid #db4437;
+  color: #db4437;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.google-button:hover {
+  background-color: #db4437;
+  color: white;
+}
+
+.already-member {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.already-member a {
+  color: #636ff1;
   text-decoration: none;
 }
 
-// Google Button CSS
-
-.google-button {
-  @apply border border-red-500 text-red-500 font-bold py-2 rounded mt-2 flex items-center justify-center w-full;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-
-  &:hover {
-    @apply bg-red-500 text-white;
-  }
-
-  img {
-    margin-right: 0.5rem;
-  }
-
-  // Responsive design
-  @media (max-width: 640px) {
-    @apply text-sm;
-    padding: 0.5rem;
-  }
-
-  @media (min-width: 641px) and (max-width: 1024px) {
-    @apply text-base;
-  }
+.already-member a:hover {
+  text-decoration: underline;
 }
 
+.terms-service {
+  margin-bottom: 10px;
+  color: white;
+}
 
-// Alert CSS
+.terms-service a {
+  color: #636ff1;
+}
 
-.alert {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 10px 20px;
-    background-color: #38993c; // Green for success
-    color: white;
-    border-radius: 5px;
-    transition: opacity 0.5s ease;
-    opacity: 1;
-  }
-  
-  .alert-error {
-    background-color: #da3d31; // Red for error
-  }
-  
-
-  // On Back Button CSS
-
-.back-button {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    position: fixed; // Fixed position to avoid shifting
-    top: 20px; // Position at the top
-    left: 20px; // Adjust left for desktop view
-    z-index: 10; // Ensure it stays above other elements
-    margin-right: 10px; // Add margin to the right
-    padding: 4px; // Add padding to the button
-    border: 2px solid #5a67d8; // Outer line color
-    border-radius: 50%; // Rounded border
-    background-color: transparent; // Transparent background
-    transition: background-color 0.3s ease; // Animation effect
-
-    .arrow-icon {
-      fill: #5a67d8; // Initial color
-      transition: fill 0.3s ease; // Animation effect
-      width: 32px; // Increased size
-      height: 32px; // Increased size
-  
-      &:hover {
-        fill: indigo; // Lighter shade of indigo on hover
-      }
-    }
-  
-    .tooltip {
-      visibility: hidden; // Initially hidden
-      width: 80px; // Width of the tooltip
-      background-color: rgba(0, 0, 0, 0.7); // Tooltip background color
-      color: #fff; // Tooltip text color
-      text-align: center; // Center text
-      border-radius: 5px; // Rounded corners
-      padding: 5px; // Padding
-      position: absolute; // Absolute positioning
-      bottom: 80%; // Position above the button
-      left: 50%; // Center the tooltip
-      transform: translate(-50%, -10%); // Adjust position to center and slightly raise
-      opacity: 0; // Initial opacity
-      transition: opacity 0.3s ease; // Fade-in effect
-      z-index: 1; // Ensure it appears above other elements
-    }
-  
-    &:hover .tooltip {
-      visibility: visible; // Show tooltip on hover
-      opacity: 1; // Fade in tooltip
-    }
-  }
-  
-  // Mobile Styles Only
-  @media (max-width: 768px) {
-    .back-button {
-      left: 12px; // Adjust for mobile to keep it within the viewport
-      top: 100px; // Position closer to the top-left corner
-  
-      .tooltip {
-        bottom: 130%; // Adjust tooltip position for better visibility on mobile
-      }
-    }
-  }
-  
   

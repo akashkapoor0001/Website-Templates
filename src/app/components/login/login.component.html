@@ -1,5 +1,5 @@
-<div class="min-h-screen flex items-center justify-center bg-black relative">
-  <!-- Back Button -->
+<!-- <div class="min-h-screen flex items-center justify-center bg-black relative">
+
   <a class="back-button" (click)="onBack()">
     <svg class="arrow-icon" viewBox="0 0 24 24">
       <path d="M13 19l-7-7 7-7" />
@@ -10,7 +10,8 @@
   <div class="container">
     <img src="assets/logo1.png" class="logo" alt="Logo" />
     <div class="card" [class.flipped]="isFlipped">
-      <!-- Login Form -->
+
+
       <div class="front bg-gray-900 p-8 rounded-lg shadow-lg max-w-md w-full">
         <h2 class="text-3xl font-bold text-center text-indigo-400 mb-6">Log In</h2>
         <form (ngSubmit)="onLogin()">
@@ -46,7 +47,7 @@
             <label for="no-account" class="block text-white mt-3 mb-2">Don't have an account?</label>
             <button (click)="toggleForm()" type="button" class="register-button">Register</button>
           </div>
-          <!-- Google Sign-In Button -->
+
           <button
             type="button"
             (click)="onGoogleLogin()"
@@ -60,7 +61,6 @@
         </form>
       </div>
 
-      <!-- Register Form -->
       <div class="back bg-gray-900 p-8 rounded-lg shadow-lg max-w-md w-full">
         <h2 class="text-3xl font-bold text-center text-indigo-400 mb-6">Register</h2>
         <form (ngSubmit)="onRegister($event)">
@@ -106,9 +106,163 @@
       </div>
     </div>
 
-    <!-- Alert Message for the login and the register pages-->
     <div *ngIf="showAlert" [ngClass]="{'alert': true, 'alert-error': alertMessage.includes('Error')}" class="alert">
       {{ alertMessage }}
     </div>
   </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="min-h-screen flex items-center justify-center bg-black relative">
+  <!-- Back Button -->
+  <a class="back-button" (click)="onBack()">
+    <svg class="arrow-icon" viewBox="0 0 24 24">
+      <path d="M13 19l-7-7 7-7" />
+    </svg>
+    <span class="tooltip">Move Back</span>
+  </a>
+
+  <div class="container">
+    <div class="signup-container">
+      <!-- Left Form Side -->
+      <div class="signup-left">
+        <div *ngIf="!isFlipped; else registerForm">
+          <h1>Sign In</h1>
+          <form (ngSubmit)="onLogin()">
+            <!-- Input field for Email -->
+            <div class="input-field">
+              <i class="fa fa-envelope icon"></i>
+              <input
+                type="email"
+                [(ngModel)]="email"
+                name="email"
+                placeholder="Your Email"
+                required
+                class="input"
+              />
+              <hr class="input-underline">
+            </div>
+            <!-- Input field for Password -->
+            <div class="input-field">
+              <i class="fa fa-lock icon"></i>
+              <input
+                type="password"
+                [(ngModel)]="password"
+                name="password"
+                placeholder="Password"
+                required
+                class="input"
+              />
+              <hr class="input-underline">
+            </div>
+            <div class="remember-forgot">
+              <input type="checkbox" id="remember" [(ngModel)]="rememberMe" />
+              <label for="remember">Remember Me</label>
+              <a href="#" (click)="onForgotPassword()">Forgot Password?</a>
+            </div>
+            <!-- Google Sign-In Button -->
+            <button
+              type="button"
+              (click)="onGoogleLogin()"
+              class="google-button"
+            >
+              <img src="assets/GoogleIcon.svg" class="h-6 w-6 mr-2" alt="Google Icon" />
+              Sign in with Google
+            </button>
+            <button type="submit" class="register-btn">Log In</button>
+            <div class="already-member">
+              <a (click)="toggleForm()">Don't have an account? Register</a>
+            </div>
+          </form>
+        </div>
+
+        <ng-template #registerForm>
+          <h1>Register</h1>
+          <form (ngSubmit)="onRegister($event)">
+            <!-- Input field for Name -->
+            <div class="input-field">
+              <i class="fa fa-user icon"></i>
+              <input
+                type="text"
+                [(ngModel)]="name"
+                name="name"
+                placeholder="Your Name"
+                required
+                class="input"
+              />
+              <hr class="input-underline">
+            </div>
+            <!-- Input field for Email -->
+            <div class="input-field">
+              <i class="fa fa-envelope icon"></i>
+              <input
+                type="email"
+                [(ngModel)]="email"
+                name="email"
+                placeholder="Your Email"
+                required
+                class="input"
+              />
+              <hr class="input-underline">
+            </div>
+            <!-- Input field for Password -->
+            <div class="input-field">
+              <i class="fa fa-lock icon"></i>
+              <input
+                type="password"
+                [(ngModel)]="password"
+                name="password"
+                placeholder="Password"
+                required
+                class="input"
+              />
+              <hr class="input-underline">
+            </div>
+            <!-- Input field for Repeat Password -->
+            <div class="input-field">
+              <i class="fa fa-lock icon"></i>
+              <input
+                type="password"
+                [(ngModel)]="confirmPassword"
+                name="confirmPassword"
+                placeholder="Repeat your password"
+                required
+                class="input"
+              />
+              <hr class="input-underline">
+            </div>
+            <div class="terms-service">
+              <input type="checkbox" id="terms" required />
+              <label for="terms">I agree to all statements in <a href="#">Terms of service</a></label>
+            </div>
+            <button type="submit" class="register-btn">Register</button>
+            <div class="already-member">
+              <a (click)="toggleForm()">I am already a member</a>
+            </div>
+          </form>
+        </ng-template>
+      </div>
+
+      <!-- Right Image Side -->
+      <div class="signup-right">
+        <img *ngIf="isFlipped; else signInImage" src="assets/signup-image.jpg" alt="Signup Image" />
+        <ng-template #signInImage>
+          <img src="assets/signin-image.jpg" alt="Sign In Image" />
+        </ng-template>
+      </div>
+    </div>
+  </div>
 </div>
+

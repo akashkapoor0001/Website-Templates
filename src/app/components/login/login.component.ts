@@ -143,6 +143,7 @@ import * as emailjs from 'emailjs-com';  // Import EmailJS
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
+confirmPassword: any;
 onBack() {
 this.router.navigate(['/']);
 }
