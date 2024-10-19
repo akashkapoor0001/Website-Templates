@@ -394,9 +394,11 @@ h1 {
 @media (max-width: 1024px) {
   .signup-container {
     flex-direction: column; /* Stack the image and form vertically */
-    margin-left: 0;
-    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%; /* Adjust max-width to prevent overflowing on smaller screens */
     min-height: auto; /* Remove the fixed height for better responsiveness */
+    padding: 20px; /* Add padding for breathing space */
   }
 
   .signup-left {
@@ -428,8 +430,10 @@ h1 {
 @media (max-width: 768px) {
   .signup-container {
     flex-direction: column;
-    margin-left: 0;
+    margin-left: auto; /* Center align on smaller screens */
+    margin-right: auto; /* Equal margin on both sides */
     padding: 10px;
+    max-width: 90%; /* Ensure it doesn’t take the entire width */
   }
 
   .signup-left {
