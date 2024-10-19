@@ -143,6 +143,8 @@ import * as emailjs from 'emailjs-com';  // Import EmailJS
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
+
+  // Removed duplicate toggleForm method
 confirmPassword: any;
 onBack() {
 this.router.navigate(['/']);
