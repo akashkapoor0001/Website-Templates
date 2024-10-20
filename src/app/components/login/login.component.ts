@@ -150,39 +150,50 @@ onBack() {
 this.router.navigate(['/']);
 }
 
-  // Function to handle forgot password
   onForgotPassword() {
-    // Ensure the user has entered their email
-    if (!this.email) {
-      Swal.fire({
-        title: 'Error!',
-        text: 'Please enter your email to reset the password.',
-        icon: 'error',
-        confirmButtonText: 'OK'
-      });
-      return;
-    }
-
-    sendPasswordResetEmail(this.auth, this.email)
-      .then(() => {
-        // Show success message
-        Swal.fire({
-          title: 'Password Reset Email Sent!',
-          text: 'Please check your inbox for instructions to reset your password.',
-          icon: 'success',
-          confirmButtonText: 'OK'
-        });
-      })
-      .catch((error) => {
-        console.error('Error during password reset:', error.message);
-        Swal.fire({
-          title: 'Error!',
-          text: `Failed to send password reset email. ${error.message}`,
-          icon: 'error',
-          confirmButtonText: 'Try Again'
-        });
-      });
-    }
+    // Show the SweetAlert to get the user's email
+    Swal.fire({
+      title: 'Reset Password',
+      text: 'Please enter your email to reset the password.',
+      input: 'email',
+      inputPlaceholder: 'Enter your email address',
+      showCancelButton: true,
+      confirmButtonText: 'Submit',
+      cancelButtonText: 'Cancel',
+      inputValidator: (value) => {
+        if (!value) {
+          return 'You need to enter your email address!';
+        }
+        return null; // Return null if the input is valid
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const email = result.value; // Get the email entered by the user
+  
+        // Call your Firebase method to send the password reset email
+        sendPasswordResetEmail(this.auth, email)
+          .then(() => {
+            // Show success message
+            Swal.fire({
+              title: 'Success!',
+              text: 'Password reset email has been sent to ' + email,
+              icon: 'success',
+              confirmButtonText: 'OK'
+            });
+          })
+          .catch((error) => {
+            // Show error message if something goes wrong
+            Swal.fire({
+              title: 'Error!',
+              text: 'Failed to send password reset email: ' + error.message,
+              icon: 'error',
+              confirmButtonText: 'OK'
+            });
+          });
+      }
+    });
+  }
+  
 
   email: string = '';
   password: string = '';
