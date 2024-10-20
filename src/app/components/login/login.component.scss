@@ -229,7 +229,8 @@
   align-items: center;
   width: 100%;
   max-width: 800px;
-  margin-left: 260px;
+  margin-left: auto;
+  margin-right: auto;
   background: #ffffff;
   padding: 20px;
   border-radius: 8px;
@@ -390,6 +391,29 @@ h1 {
 }
 
 /* Media Queries */
+
+/* Laptop View (14-inch screens, around 1366px) */
+@media (max-width: 1366px) {
+  .signup-container {
+    max-width: 80%; /* Adjust width to prevent the container from stretching too wide */
+    margin-left: auto; /* Center align */
+    margin-right: auto;
+    padding: 20px; /* Adjust padding for laptop */
+  }
+
+  .signup-left, .signup-right {
+    margin-left: 0; /* Ensure no extra margin */
+    padding: 20px; /* Adjust padding */
+  }
+
+  .register-btn {
+    width: 40%; /* Adjust button width for better proportions on laptop */
+  }
+
+  .google-button {
+    width: 60%; /* Adjust Google button width */
+  }
+}
 
 /* Tablet View */
 @media (max-width: 1024px) {
