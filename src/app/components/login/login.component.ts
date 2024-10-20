@@ -131,7 +131,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { firebaseConfig } from '../../../firebase-config';
 import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail } from 'firebase/auth';
 import Swal from 'sweetalert2';  // Import SweetAlert
 import * as emailjs from 'emailjs-com';  // Import EmailJS
 
@@ -150,9 +150,39 @@ onBack() {
 this.router.navigate(['/']);
 }
 
-onForgotPassword() {
-throw new Error('Method not implemented.');
-}
+  // Function to handle forgot password
+  onForgotPassword() {
+    // Ensure the user has entered their email
+    if (!this.email) {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Please enter your email to reset the password.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+      return;
+    }
+
+    sendPasswordResetEmail(this.auth, this.email)
+      .then(() => {
+        // Show success message
+        Swal.fire({
+          title: 'Password Reset Email Sent!',
+          text: 'Please check your inbox for instructions to reset your password.',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+      })
+      .catch((error) => {
+        console.error('Error during password reset:', error.message);
+        Swal.fire({
+          title: 'Error!',
+          text: `Failed to send password reset email. ${error.message}`,
+          icon: 'error',
+          confirmButtonText: 'Try Again'
+        });
+      });
+    }
 
   email: string = '';
   password: string = '';
@@ -249,6 +279,7 @@ rememberMe: any;
         this.showAlertWithMessage('Error during Google login: ' + error.message);
       });
   }
+  
 
   // Register new user
   onRegister(event: Event) {
