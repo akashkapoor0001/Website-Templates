@@ -193,7 +193,35 @@ this.router.navigate(['/']);
 
   app = initializeApp(firebaseConfig);
   auth = getAuth();
-rememberMe: any;
+rememberMe: boolean = false;
+
+ngOnInit(): void {
+  // Check if email is saved in localStorage
+  const savedEmail = localStorage.getItem('email');
+  if (savedEmail) {
+    this.email = savedEmail;
+    this.rememberMe = true;
+  }
+}
+
+// Called when user submits login form
+login(): void {
+  if (this.rememberMe) {
+    // Save email in localStorage
+    localStorage.setItem('email', this.email);
+  } else {
+    // Remove email from localStorage if unchecked
+    localStorage.removeItem('email');
+  }
+
+  // Handle login logic (e.g., authenticate the user)
+  console.log('Logging in with email:', this.email);
+}
+
+// Called when checkbox is clicked
+toggleRememberMe(event: any): void {
+  this.rememberMe = event.target.checked;
+}
 
   constructor(private router: Router) {}
 

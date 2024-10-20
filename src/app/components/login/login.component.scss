@@ -306,12 +306,29 @@ h1 {
   background-color: #45a0d9;
 }
 
-.remember-forgot {
+.remember-forgot-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+  align-items: center; /* Ensures both items are vertically centered */
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+.remember {
+  font-weight: 600;
+  display: flex;
+  align-items: center; /* Ensures the checkbox and label are aligned */
+}
+
+.forgot {
+  font-weight: 600;
   cursor: pointer;
+  margin-left: 10px; /* Adds a small space from the Remember Me section */
+  align-self: flex-start; /* Aligns it at the top to be in line with the checkbox */
+}
+
+.forgot:hover {
+  color: #64b9ed;
 }
 
 .google-button {
@@ -338,26 +355,24 @@ h1 {
   align-items: center;
   justify-content: center;
   margin: 20px 0;
-  
-  &::before {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid #aaa;
-    margin-right: 10px;
-  }
+}
 
-  &::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1.5px solid #aaa;
-    margin-left: 10px;
-  }
+.or-separator::before,
+.or-separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #aaa;
+  margin-right: 10px;
+}
 
-  span {
-    font-weight: bold;
-    color: black;
-    text-transform: uppercase;
-  }
+.or-separator::after {
+  margin-left: 10px;
+}
+
+.or-separator span {
+  font-weight: bold;
+  color: black;
+  text-transform: uppercase;
 }
 
 .already-member {
@@ -396,35 +411,36 @@ h1 {
 /* Laptop View (14-inch screens, around 1366px) */
 @media (max-width: 1366px) {
   .signup-container {
-    max-width: 80%; /* Adjust width to prevent the container from stretching too wide */
-    margin-left: auto; /* Center align */
+    max-width: 80%;
+    margin-left: auto;
     margin-right: auto;
-    padding: 20px; /* Adjust padding for laptop */
+    padding: 20px;
   }
 
-  .signup-left, .signup-right {
-    margin-left: 0; /* Ensure no extra margin */
-    padding: 20px; /* Adjust padding */
+  .signup-left,
+  .signup-right {
+    margin-left: 0;
+    padding: 20px;
   }
 
   .register-btn {
-    width: 40%; /* Adjust button width for better proportions on laptop */
+    width: 40%;
   }
 
   .google-button {
-    width: 60%; /* Adjust Google button width */
+    width: 60%;
   }
 }
 
 /* Tablet View */
 @media (max-width: 1024px) {
   .signup-container {
-    flex-direction: column; /* Stack the image and form vertically */
+    flex-direction: column;
     margin-left: auto;
     margin-right: auto;
-    max-width: 90%; /* Adjust max-width to prevent overflowing on smaller screens */
-    min-height: auto; /* Remove the fixed height for better responsiveness */
-    padding: 20px; /* Add padding for breathing space */
+    max-width: 90%;
+    min-height: auto;
+    padding: 20px;
   }
 
   .signup-left {
@@ -434,21 +450,21 @@ h1 {
 
   .signup-right {
     margin-left: 0;
-    margin-top: 20px; /* Add space between image and form */
+    margin-top: 20px;
     justify-content: center;
   }
 
   h1 {
-    font-size: 1.75rem; /* Slightly smaller for tablet view */
+    font-size: 1.75rem;
     text-align: center;
   }
 
   .register-btn {
-    width: 50%; /* Adjust the width for tablet */
+    width: 50%;
   }
 
   .google-button {
-    width: 70%; /* Adjust the width for tablet */
+    width: 70%;
   }
 }
 
@@ -456,10 +472,10 @@ h1 {
 @media (max-width: 768px) {
   .signup-container {
     flex-direction: column;
-    margin-left: auto; /* Center align on smaller screens */
-    margin-right: auto; /* Equal margin on both sides */
+    margin-left: auto;
+    margin-right: auto;
     padding: 10px;
-    max-width: 90%; /* Ensure it doesn’t take the entire width */
+    max-width: 90%;
   }
 
   .signup-left {
@@ -473,24 +489,24 @@ h1 {
   }
 
   h1 {
-    font-size: 1.5rem; /* Smaller for mobile */
+    font-size: 1.5rem;
     margin-bottom: 20px;
     text-align: center;
   }
 
   .input {
-    width: 100%; /* Full width inputs for mobile */
+    width: 100%;
   }
 
   .register-btn {
-    width: 100%; /* Full width button */
+    width: 100%;
   }
 
   .google-button {
-    width: 100%; /* Full width button */
+    width: 100%;
   }
 
   .or-separator {
-    margin: 15px 0; /* Less spacing for mobile */
+    margin: 15px 0;
   }
 }

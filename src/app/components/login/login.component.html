@@ -172,10 +172,21 @@
           <!-- Sign In Button -->
           <button type="submit" class="register-btn">Sign In</button>
 
-          <!-- Forgot Password -->
-          <div class="remember-forgot">
-            <a (click)="onForgotPassword()">Forgot Password?</a>
-          </div>
+          <!-- Remember Me and Forgot Password in One Line -->
+<div class="remember-forgot-container">
+  <!-- Remember Me -->
+  <div class="remember">
+    <label>
+      <input type="checkbox" id="rememberMe" (change)="toggleRememberMe($event)" [checked]="rememberMe"> Remember Me
+    </label>
+  </div>
+
+  <!-- Forgot Password -->
+  <div class="forgot">
+    <a (click)="onForgotPassword()">Forgot Password?</a>
+  </div>
+</div>
+
           
           <!-- OR separator -->
           <div class="or-separator">
