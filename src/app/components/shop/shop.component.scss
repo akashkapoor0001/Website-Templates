@@ -55,22 +55,10 @@
 }
 
 // Ensure Galleria is responsive
-.galleria-container {
-    display: flex;
-    justify-content: center; // Center Galleria on all screens
-    width: 100%; // Full width
-    margin-top: 1rem; // Add some space above the Galleria
-}
-
-.p-galleria {
-    width: 100%; // Ensure Galleria takes full width of its container
-}
-
-// Black Overlay on the images
 
 .galleria-item {
-    position: relative; /* Make the parent div relative for positioning the overlay */
-    overflow: hidden; /* Prevent content overflow */
+    position: relative; /* Ensure the overlay is positioned over the image */
+    overflow: hidden; /* Prevent content from overflowing */
 }
 
 .overlay {
@@ -79,22 +67,28 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7); /* Black transparent background */
+    background: rgba(0, 0, 0, 0.7); /* Black transparent background */
+    color: white; /* Text color */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out; /* Smooth fade-in effect */
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease; /* Smooth transition */
+    pointer-events: none; /* Prevent overlay from interfering with hover events */
+}
+
+.template-name {
+    font-size: 1.5rem; /* Adjust the font size */
+    font-weight: bold; /* Bold text */
+    text-align: center; /* Center the text */
+    transform: translateY(20px); /* Initial position for animation */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition for animation */
 }
 
 .galleria-item:hover .overlay {
     opacity: 1; /* Show the overlay on hover */
 }
 
-.template-name {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: center;
-    padding: 1rem;
+.galleria-item:hover .template-name {
+    transform: translateY(0); /* Move the text to its final position */
 }
