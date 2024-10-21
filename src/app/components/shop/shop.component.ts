@@ -92,14 +92,29 @@ throw new Error('Method not implemented.');
     }
 
     // GSAP Animation for overlay text (optional)
-    animateOverlay(index: number, direction: string) {
-        const overlay = document.getElementById(`overlay-${index}`);
-        if (!overlay) return;
+animateOverlay(index: number, direction: string) {
+    const overlay = document.getElementById(`overlay-${index}`);
+    const text = overlay?.querySelector('.template-name');
 
-        if (direction === 'in') {
-            gsap.to(overlay, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' });
-        } else if (direction === 'out') {
-            gsap.to(overlay, { opacity: 0, y: 50, duration: 0.5, ease: 'power2.in' });
-        }
+    if (!overlay || !text) return;
+
+    if (direction === 'in') {
+        // Animate overlay appearance
+        gsap.to(overlay, { opacity: 1, duration: 0.5, ease: 'power2.out' });
+        
+        // Animate the text: it grows and moves upwards
+        gsap.fromTo(
+            text,
+            { opacity: 0, y: 30, scale: 0.8 }, // Start with smaller size and below position
+            { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: 'back.out(1.7)' } // End with normal size and in place
+        );
+    } else if (direction === 'out') {
+        // Animate overlay hiding
+        gsap.to(overlay, { opacity: 0, duration: 0.5, ease: 'power2.in' });
+        
+        // Animate text going back to its initial state
+        gsap.to(text, { opacity: 0, y: 30, scale: 0.8, duration: 0.7, ease: 'power2.in' });
     }
+}
+
 }

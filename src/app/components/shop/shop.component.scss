@@ -78,8 +78,10 @@
 }
 
 .template-name {
-    font-size: 1.5rem; /* Adjust the font size */
+    font-family: 'Minne Petat', sans-serif;
+    font-size: 3rem; /* Adjust the font size */
     font-weight: bold; /* Bold text */
+    color: white; /* Text color */
     text-align: center; /* Center the text */
     transform: translateY(20px); /* Initial position for animation */
     transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition for animation */
