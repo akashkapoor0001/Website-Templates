@@ -15,24 +15,24 @@
       <!-- Card Number -->
       <div class="mb-3">
         <label for="cardNumber" class="block text-sm font-medium mb-2">Card Number</label>
-        <input type="text" id="cardNumber" required placeholder="1234 5678 9012 3456" class="block w-full p-3 border border-gray-300 rounded-lg" />
+        <input type="text" id="cardNumber" required placeholder="1234 5678 9012 3456" class="block w-full p-3 border border-gray-300 rounded-lg" maxlength="19" inputmode="numeric" />
       </div>
 
       <!-- Cardholder Name -->
       <div class="mb-3">
         <label for="cardName" class="block text-sm font-medium mb-2">Cardholder Name</label>
-        <input type="text" id="cardName" required placeholder="John Doe" class="block w-full p-3 border border-gray-300 rounded-lg" />
+        <input type="text" id="cardName" required placeholder="John Doe" class="block w-full p-3 border border-gray-300 rounded-lg" inputmode="text" />
       </div>
 
       <!-- Expiry Date and CVV -->
       <div class="flex mb-3">
         <div class="w-1/2 mr-2">
           <label for="expiryDate" class="block text-sm font-medium mb-2">Expiry Date</label>
-          <input type="text" id="expiryDate" required placeholder="MM/YY" class="block w-full p-3 border border-gray-300 rounded-lg" />
+          <input type="text" id="expiryDate" required placeholder="MM/YY" class="block w-full p-3 border border-gray-300 rounded-lg" maxlength="5" inputmode="numeric" />
         </div>
         <div class="w-1/2 ml-2">
           <label for="cvv" class="block text-sm font-medium mb-2">CVV</label>
-          <input type="text" id="cvv" required placeholder="123" class="block w-full p-3 border border-gray-300 rounded-lg" />
+          <input type="text" id="cvv" required placeholder="123" class="block w-full p-3 border border-gray-300 rounded-lg" maxlength="3" inputmode="numeric" />
         </div>
       </div>
 

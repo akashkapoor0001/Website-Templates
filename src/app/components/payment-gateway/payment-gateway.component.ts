@@ -166,38 +166,70 @@ export class PaymentGatewayComponent implements OnInit, OnDestroy {
   enteredOTP: string = '';
   showOTPError: boolean = false;
 
-  // Set the URL you want to redirect to after payment is successful
-  redirectUrl: string = 'https://websites-template-otp-auth.vercel.app/'; 
+  redirectUrl: string = 'https://websites-template-otp-auth.vercel.app/';
 
   constructor() {}
 
   ngOnInit(): void {
     gsap.fromTo('.payment-info', { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 1.5 });
     gsap.fromTo('.payment-form-container', { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 1.5 });
+
+    // Add event listeners to enforce numeric input where needed
+    const cardNumberInput = document.getElementById('cardNumber') as HTMLInputElement;
+    const cvvInput = document.getElementById('cvv') as HTMLInputElement;
+    const expiryDateInput = document.getElementById('expiryDate') as HTMLInputElement;
+
+    cardNumberInput?.addEventListener('input', this.formatCardNumber);
+    cardNumberInput?.addEventListener('keydown', this.allowOnlyNumbers);
+    cvvInput?.addEventListener('keydown', this.allowOnlyNumbers);
+    expiryDateInput?.addEventListener('keydown', this.allowOnlyNumbers);
+
+    const cardNameInput = document.getElementById('cardName') as HTMLInputElement;
+    cardNameInput?.addEventListener('keydown', this.allowOnlyText);
   }
 
-  // Handle form submission and redirect to the specified URL
+  // Format card number into 4 pairs of 4 digits
+  formatCardNumber(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    let value = input.value.replace(/\s+/g, ''); // Remove existing spaces
+    if (value.length > 16) {
+      value = value.slice(0, 16); // Limit to 16 digits
+    }
+    // Add space every 4 digits
+    input.value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+  }
+
+  // Allow only numeric input
+  allowOnlyNumbers(event: KeyboardEvent): void {
+    const key = event.key;
+    if (!/^\d$/.test(key) && key !== 'Backspace' && key !== 'Tab') {
+      event.preventDefault();
+    }
+  }
+
+  // Allow only text (letters and spaces) in Cardholder Name
+  allowOnlyText(event: KeyboardEvent): void {
+    const key = event.key;
+    if (!/^[a-zA-Z\s]$/.test(key) && key !== 'Backspace' && key !== 'Tab') {
+      event.preventDefault();
+    }
+  }
+
   onSubmit(event: Event): void {
     event.preventDefault();
-    
-    // Simulate processing payment here
     console.log('Payment details submitted');
-
-    // Redirect after form submission
     this.redirectToUrl();
   }
 
   redirectToUrl(): void {
-    window.location.href = this.redirectUrl; // Redirect to the given URL
+    window.location.href = this.redirectUrl;
   }
 
-  // Start the countdown timer for displaying success message (optional)
   startCountdown(): void {
     this.countdownInterval = setInterval(() => {
       this.countdown--;
       if (this.countdown <= 0) {
         clearInterval(this.countdownInterval);
-        // Optionally, redirect to another page or show success message after countdown
       }
     }, 1000);
   }
