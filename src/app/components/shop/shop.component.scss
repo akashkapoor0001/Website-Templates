@@ -66,3 +66,35 @@
     width: 100%; // Ensure Galleria takes full width of its container
 }
 
+// Black Overlay on the images
+
+.galleria-item {
+    position: relative; /* Make the parent div relative for positioning the overlay */
+    overflow: hidden; /* Prevent content overflow */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Black transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out; /* Smooth fade-in effect */
+}
+
+.galleria-item:hover .overlay {
+    opacity: 1; /* Show the overlay on hover */
+}
+
+.template-name {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem;
+}
