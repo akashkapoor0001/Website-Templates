@@ -173,20 +173,22 @@ export class PaymentGatewayComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     gsap.fromTo('.payment-info', { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 1.5 });
     gsap.fromTo('.payment-form-container', { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 1.5 });
-
-    // Add event listeners to enforce numeric input where needed
+  
     const cardNumberInput = document.getElementById('cardNumber') as HTMLInputElement;
     const cvvInput = document.getElementById('cvv') as HTMLInputElement;
     const expiryDateInput = document.getElementById('expiryDate') as HTMLInputElement;
-
+  
     cardNumberInput?.addEventListener('input', this.formatCardNumber);
     cardNumberInput?.addEventListener('keydown', this.allowOnlyNumbers);
     cvvInput?.addEventListener('keydown', this.allowOnlyNumbers);
+  
     expiryDateInput?.addEventListener('keydown', this.allowOnlyNumbers);
-
+    expiryDateInput?.addEventListener('input', this.validateExpiryDate); // Attach expiry date validation
+  
     const cardNameInput = document.getElementById('cardName') as HTMLInputElement;
     cardNameInput?.addEventListener('keydown', this.allowOnlyText);
   }
+  
 
   // Format card number into 4 pairs of 4 digits
   formatCardNumber(event: Event): void {
@@ -206,6 +208,25 @@ export class PaymentGatewayComponent implements OnInit, OnDestroy {
       event.preventDefault();
     }
   }
+
+  // Validate expiry date format MM/YY
+validateExpiryDate(event: Event): void {
+  const input = event.target as HTMLInputElement;
+  const value = input.value;
+
+  // Automatically add "/" after entering 2 digits for the month
+  if (value.length === 2 && !value.includes('/')) {
+    input.value = `${value}/`;
+  }
+
+  // Validate expiry date format
+  const expiryPattern = /^(0[1-9]|1[0-2])\/\d{2}$/; // Matches MM/YY format
+  if (value.length === 5 && !expiryPattern.test(value)) {
+    input.setCustomValidity('Invalid expiry date format. Please enter MM/YY.');
+  } else {
+    input.setCustomValidity('');
+  }
+}
 
   // Allow only text (letters and spaces) in Cardholder Name
   allowOnlyText(event: KeyboardEvent): void {
